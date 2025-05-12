@@ -1,0 +1,24 @@
+.logo-brand > .brand-layout-control > .img-responsive {
+  content:url("::headerFooterServer::/images/favicon-gbif.png") !important;
+}
+
+/* TODO: do this in code */
+
+#main > div > div > ul.userdetails-menu + h3,
+#main > div > div > ul.userdetails-menu + h3 + div,
+#main > div > div > ul.userdetails-menu > li:nth-child(2),
+#main > div > div > ul.userdetails-menu > li:nth-child(4),
+#main > div > div > ul.userdetails-menu > li:nth-child(7)
+{
+  display: none;
+}
+
+.btn-GitHub, .btn-google {
+  color: #fff; 
+  background-color: #36de97;
+  border-color: rgba(0,0,0,0.2);
+}
+
+#list-providers > a.btn.btn-block.btn-social > span {
+  margin-left: 10px;
+}
