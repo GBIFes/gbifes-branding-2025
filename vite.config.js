@@ -26,17 +26,7 @@ const replacements = Object.fromEntries(
   Object.entries(fragmentFiles).map(([k, f]) => [k, fs.readFileSync(f, 'utf8')])
 );
 
-const gitDigest = (() => {
-  try {
-    return require('child_process').execSync('git rev-parse --short HEAD').toString().trim();
-  } catch (_) {
-    return 'dev';
-  }
-})();
-
-
 Object.assign(replacements, {
-  '::DIGEST::': gitDigest,
   '::containerClass::': 'container',
   '::headerFooterServer::': process.env.NODE_ENV === 'development' ? 'http://localhost:3333' : baseUrl,
   '::loginURL::': `${settings.services.cas.url}/cas/login`,
@@ -77,6 +67,7 @@ const copyCommands = [
   { src: 'commonui-bs3-2019/build/js/*', dest: 'js' },
   { src: 'commonui-bs3-2019/build/css/*', dest: 'css' },
   { src: 'commonui-bs3-2019/build/fonts/*', dest: 'fonts' },
+  { src: 'app/assets/fonts/*', dest: 'fonts' },
   { src: 'app/assets/*', dest: '' },
   { src: 'app/assets/images/*', dest: 'images' },
   { src: 'app/assets/locales/*', dest: 'locales' }
@@ -137,7 +128,7 @@ export default defineConfig({
         'css/font-awesome.min.css'
       ]
     },
-    cssCodeSplit: false
+    cssCodeSplit: true
   },
   server: {
     port: 3333,
