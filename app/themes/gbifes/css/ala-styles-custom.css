@@ -44,14 +44,14 @@ p.rowB .basisofrecord { float:right; }
    display: inline-block;
    text-align: center;
    background: none;
-   border: #36de97 solid 2px;
+   border: #16d073 solid 2px;
    -webkit-border-radius: 0;
    -moz-border-radius: 0;
    -ms-border-radius: 0;
    border-radius: 0;
 
    font-size: 0.875em;
-   color: #36de97;
+   color: #16d073;
    cursor: pointer;
    text-decoration: none!important;
    max-width: 100%;
@@ -61,9 +61,9 @@ p.rowB .basisofrecord { float:right; }
 
    .btn-default:hover {
    text-decoration: none;
-   border-color: #36de97;
+   border-color: #16d073;
    color: #fff;
-   background-color: #36de97;
+   background-color: #16d073;
    }
 
  */
@@ -75,7 +75,7 @@ input[type=submit]:hover  {
 h1, h2, h3 {
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 35px;
-  color: #36de97;
+  color: #16d073;
   /* font-weight: bold; */
 }
 
