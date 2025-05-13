@@ -4,7 +4,7 @@
         <main id="main-gbif-es" class="site-main">
             <div class="gbif-es-header" style="background-image: url('/images/Banner_Portal_no_text.png')">
                 <div class="gbif-es-header-content container">
-                    <h1 id="main_title_label"></h1>
+                    <h1 data-i18n="main_title_label"></h1>
                     <div class="buscador">
                         <div class="container">
                             <form class="form-horizontal" name="simpleSearchForm" id="simpleSearchForm"
@@ -12,8 +12,8 @@
                                 <a class="hiddenmobile"
                                    id="advanced_search_link"
                                    href="::biocacheURL::/#tab_advanceSearch">
-                                    <span id="search_input_advanced1">Búsqueda</span><br/>
-                                    <span id="search_input_advanced2">Avanzada</span>
+                                    <span data-i18n="search_input_advanced1">Búsqueda</span><br/>
+                                    <span data-i18n="search_input_advanced2">Avanzada</span>
                                 </a>
                                 <input type="text" class="main_search_input" name="q" id="q" autocomplete="off">
                                 <input type="submit" name="submit" class="search-submit" id="main_search_submit">
@@ -28,61 +28,44 @@
             </div>
 
             <section class="banner_numbers container">
-
-                <div class="buscador">
-                    <div class="container">
-                        <form class="form-horizontal" name="simpleSearchForm" id="simpleSearchForm"
-                              action="::bieURL::/search" method="GET">
-                            <a class="hiddenmobile"
-                               id="advanced_search_link"
-                               href="::biocacheURL::/#tab_advanceSearch">
-                                <span id="search_input_advanced1">Búsqueda</span><br/>
-                                <span id="search_input_advanced2">Avanzada</span>
-                            </a>
-                            <input type="text" class="main_search_input" name="q" id="q" autocomplete="off">
-                            <input type="submit" name="submit" class="search-submit" id="main_search_submit">
-                        </form>
-
-                    </div>
-                </div>
-                <div class="numbers_box">
+               <div class="numbers_box">
                     <h4 class="text"></h4>
                     <div class="numbers">
                         <div class="number">
                             <div class="number_nro">
-                                <a href="::biocacheURL::/occurrences/search" id="number_registros"
-                                   style="text-decoration:none;" class="portal-link loading_stats">
-                                    25.930.000
+                              <a href="::biocacheURL::/occurrences/search" id="stats_occurrences"
+                                 style="text-decoration:none;" class="portal-link loading_stats">
+                                    30.930.000
                                 </a>
                             </div>
-                            <div class="number_text" id="numbers_occurrences_label">registros</div>
+                            <div class="number_text" data-i18n="numbers_occurrences_label">registros</div>
                         </div>
                         <div class="number">
                             <div class="number_nro">
-                                <a href="::datasetsURL::" id="number_bases"
-                                   style="text-decoration:none;" class="portal-link loading_stats">
-                                    290
+                              <a href="::datasetsURL::" id="stats_datasets"
+                                style="text-decoration:none;" class="portal-link loading_stats">
+                                    500
                                 </a>
                             </div>
-                            <div class="number_text" id="numbers_datasets_label">juegos de datos</div>
+                            <div class="number_text" data-i18n="numbers_datasets_label">juegos de datos</div>
                         </div>
                         <div class="number">
                             <div class="number_nro">
-                                <a href="::collectoryURL::" id="number_instituciones"
+                                <a href="::collectoryURL::" id="stats_institutions"
                                    style="text-decoration:none;" class="portal-link loading_stats">
                                     90
                                 </a>
                             </div>
-                            <div class="number_text" id="numbers_institutions_label">instituciones</div>
+                            <div class="number_text" data-i18n="numbers_institutions_label">instituciones</div>
                         </div>
                         <div class="number">
                             <div class="number_nro">
-                                <a href="::bieURL::" id="number_species" style="text-decoration:none;"
+                                <a href="::bieURL::" id="stats_species" style="text-decoration:none;"
                                    class="portal-link loading_stats">
-                                    110.000
+                                    120.000
                                 </a>
                             </div>
-                            <div class="number_text" id="numbers_species_label">especies</div>
+                            <div class="number_text" data-i18n="numbers_species_label">especies</div>
                         </div>
                     </div>
                 </div>
@@ -95,8 +78,8 @@
                                 <figure>
                                     <img src="images/Bandeja.svg" alt="Comparte" class="style-svg">
                                 </figure>
-                                <h3 id="sub_menu_collections">Instituciones, colecciones, base de datos y proyectos</h3>
-                                <p id="sub_menu_collections_detail">Consulta información de todas las
+                                <h3 data-i18n="sub_menu_collections">Instituciones, colecciones, base de datos y proyectos</h3>
+                                <p data-i18n="sub_menu_collections_detail">Consulta información de todas las
                                     entidades españolas que publican
                                     datos en GBIF
                                 </p>
@@ -107,8 +90,8 @@
                                 <figure>
                                     <img src="images/Etiqueta.svg" alt="Explora" class="style-svg">
                                 </figure>
-                                <h3 id="sub_menu_datasets">Juegos de datos</h3>
-                                <p id="sub_menu_datasets_detail">Accede a todas las bases de datos
+                                <h3 data-i18n="sub_menu_datasets">Juegos de datos</h3>
+                                <p data-i18n="sub_menu_datasets_detail">Accede a todas las bases de datos
                                     de biodiversidad compartidas a
                                     través de GBIF.es
                                 </p>
@@ -120,8 +103,8 @@
                                 <figure>
                                     <img src="images/Prismaticos.svg" alt="Gestiona" class="style-svg">
                                 </figure>
-                                <h3 id="sub_menu_explore">Explora tu área</h3>
-                                <p id="sub_menu_explore_detail"> Localiza y consulta las
+                                <h3 data-i18n="sub_menu_explore">Explora tu área</h3>
+                                <p data-i18n="sub_menu_explore_detail"> Localiza y consulta las
                                     especies que te rodean
                                 </p>
                             </a>
@@ -131,8 +114,8 @@
                                 <figure>
                                     <img src="images/Regions-2.svg" alt="Regiones" class="style-svg">
                                 </figure>
-                                <h3 id="sub_menu_regions">Regiones</h3>
-                                <p id="sub_menu_regions_detail">Explora las especies
+                                <h3 data-i18n="sub_menu_regions">Regiones</h3>
+                                <p data-i18n="sub_menu_regions_detail">Explora las especies
                                     includidas en un
                                     determinado territorio
                                     parque natural, área marina
@@ -144,8 +127,8 @@
                                 <figure>
                                     <img src="images/Espacial.svg" alt="Espacial" class="style-svg">
                                 </figure>
-                                <h3 id="sub_menu_spatial">Espacial</h3>
-                                <p id="sub_menu_spatial_detail">Representa, visualiza y analiza las relaciones entre las
+                                <h3 data-i18n="sub_menu_spatial">Espacial</h3>
+                                <p data-i18n="sub_menu_spatial_detail">Representa, visualiza y analiza las relaciones entre las
                                     especies, su ubicación y el medio ambiente.
                                 </p>
                             </a>
