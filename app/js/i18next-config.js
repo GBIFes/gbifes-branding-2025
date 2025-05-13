@@ -32,7 +32,7 @@ const i18nOpts = {
   },
   sendMissingTo: 'fallback',
   interpolation: {
-    escapeValue: false,
+    // escapeValue: false,
     formatSeparator: ',',
     format: function f(value, format, lng) {
       // https://www.i18next.com/formatting.html
@@ -133,6 +133,16 @@ i18n.use(backend)
         $('#dropdown-lang').find('.dropdown-toggle').html(i18n.language + ' <span class="caret"></span>');
       }
 
+
+      $('.wpml-ls-statics-shortcode_actions ul li').each(function () {
+        const currentItem = $(this).text().replace(/^\s+|\s+$/gm, '').toLowerCase();
+        $(this).removeClass('wpml-ls-current-language');
+        if (currentItem === i18n.language) {
+          $(this).addClass('wpml-ls-current-language');
+        }
+      });
+
+
       if (typeof Cookies.get(laSessionCookie) === 'undefined' && typeof currentUrl.query.lang === 'undefined') {
         // Workaround to set grails locale
         // This will use to do a unique lang redirect (to force grails to set the lang for the session)
@@ -159,4 +169,5 @@ i18n.use(backend)
        */
       // CookieConsent.init(cookiesOpt);
     });
+    window.i18next = i18n;
 }(jQuery));
