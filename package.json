@@ -11,6 +11,8 @@
     "preview": "BASE_BRANDING_URL=http://localhost:3333 vite preview"
   },
   "devDependencies": {
+    "@fontsource/noto-serif": "^5.2.7",
+    "@fontsource/open-sans": "^5.2.5",
     "@rollup/plugin-replace": "^5.0.5",
     "eslint": "^9.26.0",
     "rollup-plugin-jscc": "^2.0.0",

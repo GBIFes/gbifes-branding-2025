@@ -83,6 +83,16 @@
     "@eslint/core" "^0.13.0"
     levn "^0.4.1"
 
+"@fontsource/noto-serif@^5.2.7":
+  version "5.2.7"
+  resolved "https://registry.npmjs.org/@fontsource/noto-serif/-/noto-serif-5.2.7.tgz"
+  integrity sha512-EcsWb3Pxrg5DwLcY1bg4fmRhdytzi+vX6JPJjtzPjPy0fxpBqmk12RqgF4vmAT7zjjppdCD7z2iwyXl3AqeNRQ==
+
+"@fontsource/open-sans@^5.2.5":
+  version "5.2.5"
+  resolved "https://registry.npmjs.org/@fontsource/open-sans/-/open-sans-5.2.5.tgz"
+  integrity sha512-f0Ww6H+LB6GXA8UCgqs90h4djVttu3quH/1+wkfUY8b09mG1ESn4ACRBHYY78bsoeDXpaCyZh7eoGROBWplvAQ==
+
 "@fortawesome/fontawesome-free@^6.7.2":
   version "6.7.2"
   resolved "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-6.7.2.tgz"
