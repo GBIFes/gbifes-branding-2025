@@ -1,33 +1,3 @@
-@font-face {
-  font-family: "Galano-Grotesque";
-    font-style: normal;
-    font-weight: normal;
-    src: url("../fonts/galano_grotesque/GalanoGrotesque-Regular.woff") format("woff"),  url("../fonts/galano_grotesque/GalanoGrotesque-Regular.eot?") format("eot"),  url("../fonts/galano_grotesque/GalanoGrotesque-Regular.ttf") format("truetype"),  url("../fonts/galano_grotesque/GalanoGrotesque-Regular.woff2") format("woff2");
-}
-@font-face {
-    font-family: "Galano-Grotesque";
-    font-style: normal;
-    font-weight: bold;
-    src: url("../fonts/galano_grotesque/GalanoGrotesque-Bold.woff") format("woff"),  url("../fonts/galano_grotesque/GalanoGrotesque-Bold.eot?") format("eot"),  url("../fonts/galano_grotesque/GalanoGrotesque-Bold.ttf") format("truetype"),  url("../fonts/galano_grotesque/GalanoGrotesque-Bold.woff2") format("woff2");
-}
-@font-face {
-    font-family: "Galano-Grotesque";
-    font-style: normal;
-    font-weight: 600;
-    src: url("../fonts/galano_grotesque/GalanoGrotesque-SemiBold.woff") format("woff"),  url("../fonts/galano_grotesque/GalanoGrotesque-SemiBold.eot?") format("eot"),  url("../fonts/galano_grotesque/GalanoGrotesque-SemiBold.ttf") format("truetype"),  url("../fonts/galano_grotesque/GalanoGrotesque-SemiBold.woff2") format("woff2");
-}
-@font-face {
-    font-family: "Galano-Grotesque";
-    font-style: normal;
-    font-weight: 500;
-    src: url("../fonts/galano_grotesque/GalanoGrotesque-Medium.woff") format("woff"),  url("../fonts/galano_grotesque/GalanoGrotesque-Medium.eot?") format("eot"),  url("../fonts/galano_grotesque/GalanoGrotesque-Medium.ttf") format("truetype"),  url("../fonts/galano_grotesque/GalanoGrotesque-Medium.woff2") format("woff2");
-}
-@font-face {
-    font-family: "Galano-Grotesque";
-    font-style: normal;
-    font-weight: 300;
-    src: url("../fonts/galano_grotesque/GalanoGrotesque-Light.woff") format("woff"),  url("../fonts/galano_grotesque/GalanoGrotesque-Light.eot?") format("eot"),  url("../fonts/galano_grotesque/GalanoGrotesque-Light.ttf") format("truetype"),  url("../fonts/galano_grotesque/GalanoGrotesque-Light.woff2") format("woff2");
-}
 * {
     outline: none;
 }
@@ -51,14 +21,14 @@ body, html {
     overflow-x: hidden;
 }
 body {
-    font-size: 16px;
-    background-color: #FFFFFF;
-    position: relative;
-    font-family: "Galano-Grotesque",  sans-serif;
-    font-weight: normal;
-    color: #6f6c6f;
-    padding: 0;
-    line-height: 1.2;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  position: relative;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: normal;
+  color: #6f6c6f;
+  padding: 0;
+  line-height: 1.2;
 }
 h1 {
     font-size: 28px;
@@ -106,8 +76,8 @@ strong {
     font-weight: bold;
 }
 em {
-    font-family: "Galano-Grotesque",  sans-serif;
-    font-style: italic;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-style: italic;
 }
 img {
     -webkit-user-select: none;
@@ -116,25 +86,25 @@ img {
     user-select: none;
 }
 .button, button, input[type=submit] {
-    -webkit-transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
-    -o-transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
-    transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
-    display: inline-block;
-    text-align: center;
-    /* padding: 8px 18px 12px; */
-    background: none;
-    border: #3a67a1 solid 3px;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0;
-    font-family: "Galano-Grotesque",  sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    color: #3a67a1;
-    cursor: pointer;
-    text-decoration: none!important;
-    max-width: 100%}
+  -webkit-transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
+  -o-transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
+  transition: color 0.25s ease-out,  background-color 0.3s ease-out,  border-color 0.3s ease-out,  opacity 0.3s ease-out;
+  display: inline-block;
+  text-align: center;
+  /* padding: 8px 18px 12px; */
+  background: none;
+  border: #3a67a1 solid 3px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: #3a67a1;
+  cursor: pointer;
+  text-decoration: none!important;
+  max-width: 100%}
 .button:active, .button:active *, .button:focus, .button:focus *, .button:hover, .button:hover *, button:active, button:active *, button:focus, button:focus *, button:hover, button:hover *, input[type=submit]:active, input[type=submit]:active *, input[type=submit]:focus, input[type=submit]:focus *, input[type=submit]:hover, input[type=submit]:hover * {
     color: #2e2e2e;
     border-color: #2e2e2e;
@@ -192,8 +162,8 @@ input[disabled=disabled]:focus, input[disabled=disabled]:hover {
     border-color: #CCCCCC;
 }
 label {
-    font-size: 1.125em;
-    font-family: "Galano-Grotesque",  sans-serif;
+  font-size: 1.125em;
+  font-family: "Open Sans", Arial, sans-serif;
 }
 label small {
     font-weight: normal;
