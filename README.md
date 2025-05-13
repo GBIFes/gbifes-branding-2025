@@ -2,10 +2,10 @@
 
 This is a base branding for new Living Atlas deployments. That is, some ALA header, banner and footer theme with:
 
-- Well integration with ALA modules trying to avoid jquery conflicts and similar
-- Well integration with `CAS` Authentication
+- Good integration with ALA modules trying to avoid jquery conflicts and similar
+- Good integration with `CAS` Authentication
 - Multilingual
-- Modern javascript code without lost compatibility with old browsers
+- Modern javascript code without lost of compatibility with old browsers
 - Digest usage for skip cache old js/css when we release a new version
 
 You can use this as a basis for a new LA infrastructure branding or just to see how you can integrate your branding with ALA dependencies, etc.
