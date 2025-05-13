@@ -1,5 +1,6 @@
 {
-  "main_title_label": "Portal de Dades de Biodiversitat<br>GBIF.ES. Node Nacional d''Informació en Biodiversitat",
+  "main_subtitle_label": "GBIF.ES | Node Nacional d''Informació en Biodiversitat",
+  "main_title_label": "Portal de Dades de Biodiversitat",
   "menu_portal_part1": "Portal de Dades",
   "menu_portal_part2": "de Biodiversitat",
   "menu_collections": "Institucions, col·leccions&nbsp;&nbsp;<br>i projectes",
