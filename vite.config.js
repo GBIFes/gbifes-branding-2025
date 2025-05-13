@@ -11,7 +11,51 @@ const theme = settings.theme;
 const cleanBased = ['flatly', 'superhero', 'yeti', 'cosmo', 'darkly', 'paper', 'sandstone', 'simplex', 'slate'].includes(theme);
 const themeAssets = cleanBased || theme === 'clean' ? 'clean' : theme;
 
-const baseUrl = process.env.BASE_BRANDING_URL;
+const baseUrl = process.env.BASE_BRANDING_URL.replace(/\/+$/, '');;
+
+import glob from 'fast-glob';
+
+function virtualGlobalCss() {
+  const cssFiles = glob.sync('app/css/*.css', { onlyFiles: true });
+  const content = cssFiles.map(f => `import '/${f}';`).join('\n');
+
+  return {
+    name: 'virtual-global-css',
+    resolveId(id) {
+      if (id === 'virtual:global-css') return id;
+    },
+    load(id) {
+      if (id === 'virtual:global-css') return content;
+    }
+  };
+}
+
+function injectThemeCssLinks(theme) {
+  const themePath = `app/themes/${theme}/css/*.css`;
+  const files = glob.sync(themePath, { onlyFiles: true });
+
+  return {
+    name: 'inject-theme-css-links',
+    transformIndexHtml(html) {
+      const links = files.map(file => ({
+        tag: 'link',
+        attrs: {
+          rel: 'stylesheet',
+          href: `${baseUrl}/${file}`,
+          'data-theme': theme
+        },
+        injectTo: 'head'
+      }));
+      return { html, tags: links };
+    }
+  };
+}
+
+function prefixStaticUrls(html, baseUrl) {
+  return html.replace(/(href|src)=["'](css|js|fonts|images)\/(.*?)["']/g, (_, attr, folder, rest) => {
+    return `${attr}="${baseUrl}/${folder}/${rest}"`;
+  });
+}
 
 const fragmentFiles = {
   INDEX_BODY: `app/themes/${themeAssets}/assets/indexBody.html`,
@@ -23,7 +67,10 @@ const fragmentFiles = {
 };
 
 const replacements = Object.fromEntries(
-  Object.entries(fragmentFiles).map(([k, f]) => [k, fs.readFileSync(f, 'utf8')])
+  Object.entries(fragmentFiles).map(([k, f]) => {
+    const raw = fs.readFileSync(f, 'utf8');
+    return [k, prefixStaticUrls(raw, baseUrl)];
+  })
 );
 
 Object.assign(replacements, {
@@ -86,6 +133,8 @@ export default defineConfig({
   plugins: [
     eslintPlugin(),
     multiReplacePlugin(replacements),
+    injectThemeCssLinks(themeAssets),
+    virtualGlobalCss(),
     hotReloadFragments(),
     viteStaticCopy({ targets: copyCommands }),
     jscc({ values: { _LOCALES_URL: baseUrl, _DEBUG: 1 } })
