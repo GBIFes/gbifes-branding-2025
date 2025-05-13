@@ -1,335 +1,184 @@
 <!-- main content -->
 <div id="content" class="site-content">
-    <div id="primary-gbif-es" class="content-area parent_homepage">
-        <main id="main-gbif-es" class="site-main">
-            <div class="gbif-es-header" style="background-image: url('/images/Banner_Portal_no_text.png')">
-                <div class="gbif-es-header-content container">
-                    <h1 data-i18n="main_title_label"></h1>
-                    <div class="buscador">
-                        <div class="container">
-                            <form class="form-horizontal" name="simpleSearchForm" id="simpleSearchForm"
-                                  action=":bieURL::/search" method="GET">
-                                <a class="hiddenmobile"
-                                   id="advanced_search_link"
-                                   href="::biocacheURL::/#tab_advanceSearch">
-                                    <span data-i18n="search_input_advanced1">Búsqueda</span><br/>
-                                    <span data-i18n="search_input_advanced2">Avanzada</span>
-                                </a>
-                                <input type="text" class="main_search_input" name="q" id="q" autocomplete="off">
-                                <input type="submit" name="submit" class="search-submit" id="main_search_submit">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="gbif-es-caption">
-                  <em><a href="https://spain.inaturalist.org/observations/272262549" target="_blank">Polystichum setiferum</em> © Eduardo Fernandez Pascual (<a
-                                                                                                                      href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>)
-                </div>
-            </div>
+  <div id="primary-gbif-es" class="content-area parent_homepage">
+    <main id="main-gbif-es" class="site-main">
+      <div class="gbif-es-header" style="background-image:url('/images/Banner_Portal_no_text.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <h1 data-i18n="[html]main_title_label"></h1>
+      </div>
 
-            <section class="banner_numbers container">
-               <div class="numbers_box">
-                    <h4 class="text"></h4>
-                    <div class="numbers">
-                        <div class="number">
-                            <div class="number_nro">
-                              <a href="::biocacheURL::/occurrences/search" id="stats_occurrences"
-                                 style="text-decoration:none;" class="portal-link loading_stats">
-                                    30.930.000
-                                </a>
-                            </div>
-                            <div class="number_text" data-i18n="numbers_occurrences_label">registros</div>
-                        </div>
-                        <div class="number">
-                            <div class="number_nro">
-                              <a href="::datasetsURL::" id="stats_datasets"
-                                style="text-decoration:none;" class="portal-link loading_stats">
-                                    500
-                                </a>
-                            </div>
-                            <div class="number_text" data-i18n="numbers_datasets_label">juegos de datos</div>
-                        </div>
-                        <div class="number">
-                            <div class="number_nro">
-                                <a href="::collectoryURL::" id="stats_institutions"
-                                   style="text-decoration:none;" class="portal-link loading_stats">
-                                    90
-                                </a>
-                            </div>
-                            <div class="number_text" data-i18n="numbers_institutions_label">instituciones</div>
-                        </div>
-                        <div class="number">
-                            <div class="number_nro">
-                                <a href="::bieURL::" id="stats_species" style="text-decoration:none;"
-                                   class="portal-link loading_stats">
-                                    120.000
-                                </a>
-                            </div>
-                            <div class="number_text" data-i18n="numbers_species_label">especies</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="franja_verde">
-                <div class="container">
-                    <div class="row fv_list">
-                        <div class="col-sm-3 fv_item">
-                            <a class="enlace portal-link " href="::collectoryURL::" target="_self">
-                                <figure>
-                                    <img src="images/Bandeja.svg" alt="Comparte" class="style-svg">
-                                </figure>
-                                <h3 data-i18n="sub_menu_collections">Instituciones, colecciones, base de datos y proyectos</h3>
-                                <p data-i18n="sub_menu_collections_detail">Consulta información de todas las
-                                    entidades españolas que publican
-                                    datos en GBIF
-                                </p>
-                            </a>
-                        </div>
-                        <div class="col-sm-2 fv_item">
-                            <a class="enlace portal-link " href="::datasetsURL::" target="_self">
-                                <figure>
-                                    <img src="images/Etiqueta.svg" alt="Explora" class="style-svg">
-                                </figure>
-                                <h3 data-i18n="sub_menu_datasets">Juegos de datos</h3>
-                                <p data-i18n="sub_menu_datasets_detail">Accede a todas las bases de datos
-                                    de biodiversidad compartidas a
-                                    través de GBIF.es
-                                </p>
-                            </a>
-                        </div>
-                        <div class="col-sm-2 fv_item">
-                            <a class="enlace portal-link " href="::biocacheURL::/explore/your-area"
-                               target="_self">
-                                <figure>
-                                    <img src="images/Prismaticos.svg" alt="Gestiona" class="style-svg">
-                                </figure>
-                                <h3 data-i18n="sub_menu_explore">Explora tu área</h3>
-                                <p data-i18n="sub_menu_explore_detail"> Localiza y consulta las
-                                    especies que te rodean
-                                </p>
-                            </a>
-                        </div>
-                        <div class="col-sm-2 fv_item">
-    												<a class="enlace portal-link" href="::regionsURL::" target="_self">
-                                <figure>
-                                    <img src="images/Regions-2.svg" alt="Regiones" class="style-svg">
-                                </figure>
-                                <h3 data-i18n="sub_menu_regions">Regiones</h3>
-                                <p data-i18n="sub_menu_regions_detail">Explora las especies
-                                    includidas en un
-                                    determinado territorio
-                                    parque natural, área marina
-                                </p>
-                            </a>
-                        </div>
-                        <div class="col-sm-2 fv_item">
-                            <a class="enlace portal-link" href="https://espacial.gbif.es" target="_self">
-                                <figure>
-                                    <img src="images/Espacial.svg" alt="Espacial" class="style-svg">
-                                </figure>
-                                <h3 data-i18n="sub_menu_spatial">Espacial</h3>
-                                <p data-i18n="sub_menu_spatial_detail">Representa, visualiza y analiza las relaciones entre las
-                                    especies, su ubicación y el medio ambiente.
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+      <div class="col-xs-12 col-sm-8 col-md-10">
+        <form id="simpleSearchForm" action="::bieURL::/search" method="GET" class="search-box">
+          <input type="text" name="q" id="q" placeholder="Buscar" autocomplete="off">
+
+          <a id="advanced_search_link" href="::biocacheURL::/#tab_advanceSearch">Búsqueda<br>Avanzada</a>
+
+          <button type="submit" id="main_search_submit">
+            <img src="../../../images/search-icon.svg" alt="">
+          </button>
+        </form>
+      </div>
     </div>
-<style>
-    #site-menu {
-        border-bottom: none !important;
-    }
+  </div>
 
-    .main_search_input {
-        width: 100%;
-        line-height: 1em;
-        top: 55%;
-    }
+  <div class="gbif-es-caption">
+    <em><a href="https://spain.inaturalist.org/observations/272262549" target="_blank">Polystichum setiferum</a></em>
+    © Eduardo Fernandez Pascual (<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>)
+  </div>
+      </div>
 
-    #main_search_submit {
-        top: 58%;
-    }
+      <section class="banner_numbers container">
+        <div class="numbers_box">
+          <h4 class="text"></h4>
+          <div class="numbers">
+            <div class="number">
+              <div class="number_nro">
+                <a href="::biocacheURL::/occurrences/search" id="stats_occurrences"
+                   style="text-decoration:none;" class="portal-link loading_stats">
+                  30.930.000
+                </a>
+              </div>
+              <div class="number_text" data-i18n="numbers_occurrences_label">registros</div>
+            </div>
+            <div class="number">
+              <div class="number_nro">
+                <a href="::datasetsURL::" id="stats_datasets"
+                   style="text-decoration:none;" class="portal-link loading_stats">
+                  500
+                </a>
+              </div>
+              <div class="number_text" data-i18n="numbers_datasets_label">juegos de datos</div>
+            </div>
+            <div class="number">
+              <div class="number_nro">
+                <a href="::collectoryURL::" id="stats_institutions"
+                   style="text-decoration:none;" class="portal-link loading_stats">
+                  90
+                </a>
+              </div>
+              <div class="number_text" data-i18n="numbers_institutions_label">instituciones</div>
+            </div>
+            <div class="number">
+              <div class="number_nro">
+                <a href="::bieURL::" id="stats_species" style="text-decoration:none;"
+                   class="portal-link loading_stats">
+                  120.000
+                </a>
+              </div>
+              <div class="number_text" data-i18n="numbers_species_label">especies</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="franja_verde">
+        <div class="container">
+          <div class="row fv_list">
+            <div class="col-sm-3 fv_item">
+              <a class="enlace portal-link " href="::collectoryURL::" target="_self">
+                <figure>
+                  <img src="images/Bandeja.svg" alt="Comparte" class="style-svg">
+                </figure>
+                <h3 data-i18n="sub_menu_collections">Instituciones, colecciones, base de datos y proyectos</h3>
+                <p data-i18n="sub_menu_collections_detail">Consulta información de todas las
+                  entidades españolas que publican
+                  datos en GBIF
+                </p>
+              </a>
+            </div>
+            <div class="col-sm-2 fv_item">
+              <a class="enlace portal-link " href="::datasetsURL::" target="_self">
+                <figure>
+                  <img src="images/Etiqueta.svg" alt="Explora" class="style-svg">
+                </figure>
+                <h3 data-i18n="sub_menu_datasets">Juegos de datos</h3>
+                <p data-i18n="sub_menu_datasets_detail">Accede a todas las bases de datos
+                  de biodiversidad compartidas a
+                  través de GBIF.es
+                </p>
+              </a>
+            </div>
+            <div class="col-sm-2 fv_item">
+              <a class="enlace portal-link " href="::biocacheURL::/explore/your-area"
+                 target="_self">
+                <figure>
+                  <img src="images/Prismaticos.svg" alt="Gestiona" class="style-svg">
+                </figure>
+                <h3 data-i18n="sub_menu_explore">Explora tu área</h3>
+                <p data-i18n="sub_menu_explore_detail"> Localiza y consulta las
+                  especies que te rodean
+                </p>
+              </a>
+            </div>
+            <div class="col-sm-2 fv_item">
+    		  <a class="enlace portal-link" href="::regionsURL::" target="_self">
+                <figure>
+                  <img src="images/Regions-2.svg" alt="Regiones" class="style-svg">
+                </figure>
+                <h3 data-i18n="sub_menu_regions">Regiones</h3>
+                <p data-i18n="sub_menu_regions_detail">Explora las especies
+                  includidas en un
+                  determinado territorio
+                  parque natural, área marina
+                </p>
+              </a>
+            </div>
+            <div class="col-sm-2 fv_item">
+              <a class="enlace portal-link" href="https://espacial.gbif.es" target="_self">
+                <figure>
+                  <img src="images/Espacial.svg" alt="Espacial" class="style-svg">
+                </figure>
+                <h3 data-i18n="sub_menu_spatial">Espacial</h3>
+                <p data-i18n="sub_menu_spatial_detail">Representa, visualiza y analiza las relaciones entre las
+                  especies, su ubicación y el medio ambiente.
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <style>
 
-    #advanced_search_link {
-        color: black;
-        float: right;
-        position: relative;
-        margin-right: 100px;
-        top: 50px;
-    }
+    /* ------------------------------------------------------------------
+       Header + buscador
+       ------------------------------------------------------------------ */
+    .gbif-es-header          {background-size:cover;background-position:center;padding: 60px 0 60px;position:relative}
+    .gbif-es-header-content  {margin:0;padding-left:220px;text-align:left}
+    .gbif-es-header h1       { font-size: 2.2rem; line-height: 1.3; margin-bottom: 30px; color: #fff;  }
 
-    .loading_stats {
-        color: #aaa;
-        text-decoration: none;
-    }
+    /* ------------------------------------------------------------------
+       Buscador
+       ------------------------------------------------------------------ */
+    .buscador               {max-width:640px}
+    #simpleSearchForm       {position:relative;display:flex;width:100%}
+    #q                      {flex:1;padding:14px 140px 14px 20px;border:0;border-radius:4px} /* hueco derecha */
+    #advanced_search_link   {position:absolute;right:70px;top:50%;transform:translateY(-50%);font-size:.8rem;line-height:1;color:#555;text-align:right}
+    #main_search_submit     {position:absolute;right:12px;top:50%;transform:translateY(-50%);background:transparent;border:0;width:24px;height:24px;cursor:pointer}
+    #main_search_submit img {width:100%;height:100%}
 
-    .loaded_stats {
-        color: #36de97;
-        text-decoration: none;
-        transition-delay: 0.5s;
-    }
+    /* ------------------------------------------------------------------
+       Estadísticas y sección verde (sin cambios de estilo específicos)
+       ------------------------------------------------------------------ */
+    .parent_homepage .franja_verde{padding-top:90px}
+    .fv_item{margin-top:20px}
 
-    .parent_homepage .franja_verde {
-        padding-top: 90px;
-    }
+    /* ------------------------------------------------------------------
+       Pie de foto en la cabecera
+       ------------------------------------------------------------------ */
+    .gbif-es-caption{font-size:12px;position:absolute;right:0;bottom:4px;padding:5px 10px 0;color:#f2f2f2}
+    .gbif-es-caption:hover{background:rgba(0,0,0,.3)}
+    .gbif-es-caption a{color:inherit}
 
-    .fv_item {
-        margin-top: 20px;
-    }
+    /* ------------------------------------------------------------------
+       Stats
+       ------------------------------------------------------------------ */
+    .loading_stats { color: #aaa; text-decoration: none;  }
+    .loaded_stats { color: #36de97; text-decoration: none; transition-delay: 0.5s; }
 
-    .header-content {
-        max-width: 700px;
-        margin: 0 auto;
-    }
 
-    .main-title {
-        font-size: 2.5rem;
-        font-weight: 600;
-        margin-bottom: 30px;
-        line-height: 1.2;
-    }
 
-    .header-search {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .header-search input.main_search_input {
-        padding: 10px 15px;
-        font-size: 1.1rem;
-        width: 70%;
-        border: none;
-        border-radius: 4px;
-    }
-
-    .header-search button.search-submit {
-        padding: 10px 20px;
-        font-size: 1.1rem;
-        background-color: #36de97;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        color: #fff;
-    }
-
-    .gbif-es-header {
-        background-size: cover;
-        background-position: center;
-        padding: 100px 0 60px;
-        color: white;
-        text-align: center;
-        position: relative;
-    }
-
-    .gbif-es-header-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .gbif-es-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-    }
-
-    .gbif-es-header h1 {
-        font-size: 2.2rem;
-        font-weight: 700;
-        line-height: 1.3;
-        margin-bottom: 30px;
-		color: #fff;
-    }
-
-    .gbif-es-searchbar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .gbif-es-searchbar input {
-        flex-grow: 1;
-        padding: 12px 16px;
-        font-size: 1rem;
-        border: none;
-        border-radius: 6px 0 0 6px;
-        outline: none;
-    }
-
-    .gbif-es-searchbar button {
-        background-color: #1db954;
-        border: none;
-        border-radius: 0 6px 6px 0;
-        padding: 12px 16px;
-        cursor: pointer;
-    }
-
-    .gbif-es-searchbar img {
-        width: 18px;
-        height: 18px;
-    }
-
-    .advanced-link {
-        display: block;
-        margin-top: 10px;
-        color: #ffffff;
-        text-decoration: underline;
-        font-size: 0.95rem;
-    }
-
-    .gbif-es-caption {
-        font-size: 12px;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        padding: 5px 10px 0;
-        color: #fff;
-    }
-
-    .gbif-es-caption:hover {
-        color: #fff;
-        background: rgba(0, 0, 0, .3)
-    }
-
-    .gbif-es-caption a {
-        color: inherit
-    }
-
-    .buscador {
-        position: relative;
-    }
-
-    .buscador input[type=text] {
-        padding: 10px 30px;
-        margin: 25px 0 0;
-		border: 0;
-    }
-
-    .buscador .container {
-        position: relative;
-    }
-
-    .buscador input.search-submit {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 35px;
-        height: 35px;
-        background: url(../../../images/search-icon.svg) no-repeat;
-        background-size: 100%;
-        top: 50%;
-        right: 45px;
-        padding: 0;
-        margin: 0;
-        border: none;
-        text-indent: -10000px;
-    }
-</style>
+  </style>
 </html>
