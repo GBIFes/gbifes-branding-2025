@@ -55,16 +55,18 @@ echo "Builder: $BUILDER"
 NODE_PATH=~/.npm-packages/lib/node_modules/ node app/js/stats-job.js > app/assets/stats.json
 
 if [ "$BUILDER" = "brunch" ]; then
+  DEST=public
   cp app/js/settings-demo.js app/js/settings.js
   brunch build --production
 elif [ "$BUILDER" = "vite" ]; then
+  DEST=dist
   cp app/js/settings-demo.js app/js/settings.js
-  BASE_BRANDING_URL=https://demo.gbif.es npm run build
+  npm run build-demo
 fi
 
 if [ "$DEPLOY" = "demo" ] || [ "$DEPLOY" = "both" ]; then
-  rsync -a --delete public/ demo.gbif.es:/srv/demo.gbif.es/www/brand-2025-vite/
-  rsync -a public/ demo.gbif.es:/srv/demo.gbif.es/www/
+  rsync -a --delete $DEST/ demo.gbif.es:/srv/demo.gbif.es/www/brand-2025-vite/
+  rsync -a $DEST/ demo.gbif.es:/srv/demo.gbif.es/www/
 fi
 
 if [ "$BUILDER" = "brunch" ]; then
@@ -76,8 +78,8 @@ elif [ "$BUILDER" = "vite" ]; then
 fi
 
 if [ "$DEPLOY" = "datos" ] || [ "$DEPLOY" = "both" ]; then
-  rsync -a --delete public/ datos.gbif.es:/srv/auth.gbif.es/www/brand-2025-vite/
-  rsync -a public/ datos.gbif.es:/srv/auth.gbif.es/www/
+  rsync -a --delete $DEST/ datos.gbif.es:/srv/auth.gbif.es/www/brand-2025-vite/
+  rsync -a $DEST/ datos.gbif.es:/srv/auth.gbif.es/www/
   curl -s https://registros.gbif.es/headerFooter/clearCache && \
   curl -s https://especies.gbif.es/headerFooter/clearCache && \
   curl -s https://listas.gbif.es/headerFooter/clearCache && \
