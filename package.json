@@ -8,6 +8,7 @@
     "lintx": "eslint app/ --ext .js --fix",
     "dev": "BASE_BRANDING_URL=http://localhost:3333 vite",
     "build": "BASE_BRANDING_URL=https://datos.gbif.es vite build",
+    "build-demo": "BASE_BRANDING_URL=https://demo.gbif.es vite build",
     "preview": "BASE_BRANDING_URL=http://localhost:3333 vite preview"
   },
   "devDependencies": {
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "bent": "^7.3.12",
     "countup.js": "^2.8.0",
     "domurl": "^2.3.4",
     "i18next": "^23.11.5",
