@@ -4,13 +4,22 @@
 <link rel="apple-touch-icon-precomposed" href="::headerFooterServer::/images/favicon-gbif.png" />
 
 <meta name="msapplication-TileImage" content="::headerFooterServer::/images/favicon-gbif.png" />
-<!-- Google Analytics -->
+<!-- Google Analytics (not during development) -->
 <script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-56381349-1', 'auto');
-  ga('send', 'pageview');
+  if (location.hostname !== 'localhost') {
+    window.ga = window.ga || function () {
+      (ga.q = ga.q || []).push(arguments)
+    };
+    ga.l = +new Date;
+    ga('create', 'UA-56381349-1', 'auto');
+    ga('send', 'pageview');
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.google-analytics.com/analytics.js';
+    document.head.appendChild(script);
+  }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 <!-- End Google Analytics -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
