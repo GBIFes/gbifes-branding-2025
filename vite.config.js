@@ -6,11 +6,65 @@ import multiReplacePlugin from './vite-plugin-multi-replace';
 import settings from './app/js/settings.js';
 import jscc from 'rollup-plugin-jscc';
 import eslintPlugin from 'vite-plugin-eslint';
-import stringReplace from 'vite-plugin-string-replace';
+import { VitePluginRadar } from 'vite-plugin-radar'
+import https from 'https';
 
 const theme = settings.theme;
 const cleanBased = ['flatly', 'superhero', 'yeti', 'cosmo', 'darkly', 'paper', 'sandstone', 'simplex', 'slate'].includes(theme);
 const themeAssets = cleanBased || theme === 'clean' ? 'clean' : theme;
+
+function downloadSass(url, outputPath) {
+  return new Promise((resolve, reject) => {
+    const file = fs.createWriteStream(outputPath);
+    https.get(url, res => {
+      if (res.statusCode !== 200) return reject(new Error(`HTTP ${res.statusCode}`));
+      res.pipe(file);
+      file.on('finish', () => file.close(resolve));
+    }).on('error', reject);
+  });
+}
+
+function fetchExternalSass() {
+  return {
+    name: 'fetch-external-sass',
+    async buildStart() {
+      const targets = [
+        {
+          url: 'https://gbif.es/wp-content/themes/gbifes/mixins.scss',
+          output: path.resolve(__dirname, 'app/css/_mixins.scss')
+        },
+        {
+          url: 'https://gbif.es/wp-content/themes/gbifes/gbif.sass',
+          output: path.resolve(__dirname, 'app/css/_external.sass')
+        }
+      ];
+
+      for (const { url, output } of targets) {
+        console.log(`Downloading ${url} → ${output}`);
+        await downloadSass(url, output);
+      }
+    }
+  };
+}
+
+function injectFinalCss() {
+  return {
+    name: 'inject-final-css',
+    transformIndexHtml(html) {
+      return {
+        html,
+        tags: [{
+          tag: 'link',
+          attrs: {
+            rel: 'stylesheet',
+            href: `${baseUrl}/css/main.css` // ← salida generada de tu main.scss
+          },
+          injectTo: 'head' // pero debe ir después en orden
+        }]
+      }
+    }
+  }
+}
 
 const baseUrl = process.env.BASE_BRANDING_URL.replace(/\/+$/, '');;
 
@@ -119,7 +173,6 @@ const copyCommands = [
   { src: 'commonui-bs3-2019/build/fonts/*', dest: 'fonts' },
   { src: 'app/assets/fonts/*', dest: 'fonts' },
   { src: 'app/assets/*', dest: '' },
-  { src: 'app/js/*', dest: 'app/js' },
   { src: `app/themes/${themeAssets}`, dest: 'app/themes/' },
   { src: 'app/assets/images/*', dest: 'images' },
   { src: 'app/assets/locales/*', dest: 'locales' }
@@ -137,27 +190,30 @@ export default defineConfig({
   assetsInclude: ['app/assets/*.ico', 'app/assets/images/*', 'app/assets/locales/**/*'],
   plugins: [
     eslintPlugin(),
-    // Used for change urls in CSS
-    stringReplace([
-      {
-        search: '::headerFooterServer::',
-        replace: headerFooterServer,
-      },
-    ]),
     multiReplacePlugin(replacements),
     virtualGlobalCss(),
     hotReloadFragments(),
     viteStaticCopy({ targets: copyCommands }),
     injectThemeCssLinks(themeAssets),
-    jscc({ values: { _LOCALES_URL: baseUrl, _DEBUG: 1 } })
+    jscc({ values: { _LOCALES_URL: baseUrl, _DEBUG: 1 } }),
+    VitePluginRadar({
+      analytics: {
+        id: settings.analytics.googleId
+      }
+    }),
+    // Disable the use of gbif.es css/sass for now
+    // fetchExternalSass(),
+    // injectFinalCss()
   ],
   build: {
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
+        init: path.resolve(__dirname, 'app/js/init.js'),
         errorPage: path.resolve(__dirname, 'errorPage.html'),
         testPage: path.resolve(__dirname, 'testPage.html'),
-        testSmall: path.resolve(__dirname, 'testSmall.html')
+        testSmall: path.resolve(__dirname, 'testSmall.html'),
+        banner: path.resolve(__dirname, 'banner.html'),
       },
       output: {
         entryFileNames: 'js/[name].[hash].js',
