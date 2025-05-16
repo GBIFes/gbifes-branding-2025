@@ -30,13 +30,19 @@ var loginStatusInIndex = () => {
       if (settings.isDevel) console.log('Auth cookie present so logged in');
       $('#dropdown-auth-menu')
         .removeClass('::loginStatus::')
-        .addClass('signedIn');
+        .addClass('signedIn').show();
+      $('#nav-auth-menu')
+        .removeClass('::loginStatus::')
+        .addClass('signedIn').show();
     } else {
       if (settings.isDevel)
         console.log('No auth cookie not present so not-logged in');
       $('#dropdown-auth-menu')
         .removeClass('::loginStatus::')
-        .addClass('signedOut');
+        .addClass('signedOut').show();
+      $('#nav-auth-menu')
+        .removeClass('::loginStatus::')
+        .addClass('signedOut').show();
     }
   } else {
     if (settings.isDevel) console.log('We aren\'t in the main url');
