@@ -1,17 +1,19 @@
-
 /* Authentication menu items */
 .signedIn > li > a.signUpBtn {
   display: none;
 }
 
-.signedOut > li > a.myProfileBtn {
+#dropdown-auth-menu,
+#nav-auth-menu {
   display: none;
 }
 
-.signedIn > li > a.loginBtn  {
+.signedIn .loginBtn,
+.signedIn .signUpBtn {
   display: none;
 }
 
-.signedOut > li > a.logoutBtn  {
+.signedOut .logoutBtn,
+.signedOut .myProfileBtn {
   display: none;
 }

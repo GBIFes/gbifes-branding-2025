@@ -5151,40 +5151,40 @@ button.top-search-icon {
 
 /* Top bar auth icons and btns */
 
-#navbarSmallOuterWrapper {
+#dropdown-auth-menu {
   position: absolute;
   top: 5px;
   right: 10px;
 }
 
 @media screen and (max-width:550px) {
-  #navbarSmallOuterWrapper {
+  #dropdown-auth-menu {
     right: -15px;
   }
 }
 
-#navbarOuterWrapper {
+#nav-auth-menu {
   position: absolute;
   top: 5px;
   right: 150px;
 }
 
-#navbarOuterWrapper > div > div.signedIn > .signUpBtn {
+#nav-auth-menu > div > div.signedIn > .signUpBtn {
   display: none;
 }
 
 #navbarSmallOuterWrapper.signedOut > a.myProfileBtn,
-#navbarOuterWrapper > div > div.signedOut > .myProfileBtn {
+#nav-auth-menu > div > div.signedOut > .myProfileBtn {
   display: none;
 }
 
 #navbarSmallOuterWrapper.signedIn > a.mobile-login-btn,
-#navbarOuterWrapper > div > div.signedIn > .loginBtn  {
+#nav-auth-menu > div > div.signedIn > .loginBtn  {
   display: none;
 }
 
 #navbarSmallOuterWrapper.signedOut > a.mobile-logout-btn,
-#navbarOuterWrapper > div > div.signedOut > .logoutBtn  {
+#nav-auth-menu > div > div.signedOut > .logoutBtn  {
   display: none;
 }
 
