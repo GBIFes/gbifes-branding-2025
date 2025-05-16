@@ -9,3 +9,5 @@ import '@fontsource/open-sans/400.css';
 import '@fontsource/open-sans/600.css';
 import '@fontsource/noto-serif/400.css';
 import '@fontsource/noto-serif/600.css';
+// Disable the use of gbif.es css/sass for now
+// import '../css/main.scss';
