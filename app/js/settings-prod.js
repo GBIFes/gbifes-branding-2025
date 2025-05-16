@@ -33,6 +33,9 @@ export default {
     },
     { title: 'Datasets', url: 'https://colecciones.gbif.es/datasets' },
     { title: 'twitter', url: 'https://twitter.com/GbifEs', icon: 'twitter' }
-  ]
+  ],
+  analytics: {
+    googleId: 'UA-56381349-1'
+  }
 };
 
