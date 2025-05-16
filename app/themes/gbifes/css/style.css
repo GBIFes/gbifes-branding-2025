@@ -142,7 +142,7 @@ img {
     display: block;
     width: 14px;
     height: 18px;
-    background: url(../../../images/arrow-down.svg) no-repeat;
+    background: url(::headerFooterServer::/images/arrow-down.svg) no-repeat;
     background-size: 100%;
     position: absolute;
     top: 50%;
@@ -207,7 +207,7 @@ div.wpcf7 form input[type=submit]:disabled {
     width: 25px;
     height: 37px;
     float: left;
-    background: url(../../../images/descarga.svg) no-repeat;
+    background: url(::headerFooterServer::/images/descarga.svg) no-repeat;
     background-size: 100%}
 #icon_adj.active {
     display: inline-block;
@@ -351,7 +351,7 @@ header#masthead #topheader .head-links a.arrow-link:after {
     margin-left: 7px;
     width: 10px;
     height: 10px;
-    background: url(../../../images/top-green-arrow.svg) no-repeat;
+    background: url(::headerFooterServer::/images/top-green-arrow.svg) no-repeat;
     background-size: 100%}
 header#masthead #topheader .head-links a.twitter-link i.fa {
     font-size: 1.125em;
@@ -413,7 +413,7 @@ header#masthead #topheader .searchbox .search-form label:after {
     display: none;
     width: 19px;
     height: 19px;
-    background: url(../../../images/search-icon.svg) no-repeat;
+    background: url(::headerFooterServer::/images/search-icon.svg) no-repeat;
     background-size: 100%;
     top: 50%;
     right: 0;
@@ -429,7 +429,7 @@ header#masthead #topheader .searchbox .search-form .search-submit {
     position: absolute;
     width: 19px;
     height: 19px;
-    background: url(../../../images/search-icon.svg) no-repeat;
+    background: url(::headerFooterServer::/images/search-icon.svg) no-repeat;
     background-size: 100%;
     top: 50%;
     right: 0;
@@ -1309,16 +1309,16 @@ footer .foot_block5 ul li {
     display: table-cell;
 }
 .blocks .block.b1 {
-    background: url(../../../images/pattern1.png) #2fd48f repeat;
+    background: url(::headerFooterServer::/images/pattern1.png) #2fd48f repeat;
 }
 .blocks .block.b2 {
-    background: url(../../../images/pattern2.png) #3a67a1 repeat;
+    background: url(::headerFooterServer::/images/pattern2.png) #3a67a1 repeat;
 }
 .blocks .block.b3 {
-    background: url(../../../images/pattern3.png) #bee65f repeat;
+    background: url(::headerFooterServer::/images/pattern3.png) #bee65f repeat;
 }
 .blocks .block.b4 {
-    background: url(../../../images/pattern4.png) #35a089 repeat;
+    background: url(::headerFooterServer::/images/pattern4.png) #35a089 repeat;
 }
 .blocks .block+h3 {
     margin-top: 30px;
@@ -1537,7 +1537,7 @@ article figure {
 }
 article figure.img_small {
     text-align: center;
-    background: url(../../../images/pattern5.png) #16d073 no-repeat;
+    background: url(::headerFooterServer::/images/pattern5.png) #16d073 no-repeat;
     position: relative;
 }
 article figure.img_small img {
@@ -1689,7 +1689,7 @@ article .text_box {
     display: inline-block;
     height: 21px;
     width: 27px;
-    background: url(../../../images/calendar.svg) no-repeat;
+    background: url(::headerFooterServer::/images/calendar.svg) no-repeat;
     background-size: 100%}
 .filters .category_filter {
     display: inline-block;
@@ -1789,7 +1789,7 @@ article .text_box {
     border: 2px solid #eeeeee;
     padding: 7px 10px 10px;
     color: #b5b5b5;
-    background-image: url(../../../images/flechadown.png);
+    background-image: url(::headerFooterServer::/images/flechadown.png);
     background-position: 95% center;
     background-repeat: no-repeat;
 }
@@ -2107,16 +2107,16 @@ article .text_box {
     vertical-align: middle;
 }
 .bloques .bloque figure.b1 {
-    background: url(../../../images/pattern1.png) #2fd48f repeat;
+    background: url(::headerFooterServer::/images/pattern1.png) #2fd48f repeat;
 }
 .bloques .bloque figure.b2 {
-    background: url(../../../images/pattern2.png) #3a67a1 repeat;
+    background: url(::headerFooterServer::/images/pattern2.png) #3a67a1 repeat;
 }
 .bloques .bloque figure.b3 {
-    background: url(../../../images/pattern3.png) #bee65f repeat;
+    background: url(::headerFooterServer::/images/pattern3.png) #bee65f repeat;
 }
 .bloques .bloque figure.b4 {
-    background: url(../../../images/pattern4.png) #35a089 repeat;
+    background: url(::headerFooterServer::/images/pattern4.png) #35a089 repeat;
 }
 .bloques .bloque .text_box h3 {
     color: #202020;
@@ -2164,7 +2164,7 @@ article .text_box {
     background: #16d073;
 }
 .noimgsearch .no-img {
-    background: url(../../../images/pattern5.png) #16d073 no-repeat;
+    background: url(::headerFooterServer::/images/pattern5.png) #16d073 no-repeat;
     width: 100%;
     height: 354px;
     display: table;
@@ -2176,7 +2176,7 @@ article .text_box {
     margin-bottom: 50px;
 }
 .herramientas_list .no-img {
-    background: url(../../../images/pattern5.png) #16d073 no-repeat;
+    background: url(::headerFooterServer::/images/pattern5.png) #16d073 no-repeat;
     width: 100%;
     height: 354px;
     display: table;
@@ -2510,7 +2510,7 @@ h4.hash_title {
     margin-right: 4px;
     width: 10px;
     height: 10px;
-    background: url(../../../images/top-green-arrow.svg) no-repeat;
+    background: url(::headerFooterServer::/images/top-green-arrow.svg) no-repeat;
     background-size: 100%}
 .page_text .sidebar_instituciones h1 {
     font-size: 1.25em;
@@ -2850,7 +2850,7 @@ body.MacOS .cuestionarios .primary-button, body.MacOS .registros_block article .
     display: none;
 }
 .flechaup {
-    background: url(../../../images/flechaup.png) no-repeat;
+    background: url(::headerFooterServer::/images/flechaup.png) no-repeat;
     background-size: 100%;
     height: 22px;
     width: 22px;
@@ -2884,7 +2884,7 @@ body.MacOS .cuestionarios .primary-button, body.MacOS .registros_block article .
     bottom: 4px;
     width: 26px;
     height: 26px;
-    background: url(../../../images/calendar-icon.png) no-repeat;
+    background: url(::headerFooterServer::/images/calendar-icon.png) no-repeat;
 }
 .cuestionarios .input-group {
     margin-left: -8px;
@@ -2944,7 +2944,7 @@ body.MacOS .cuestionarios .primary-button, body.MacOS .registros_block article .
     -moz-appearance: none;
     -o-appearance: none;
     appearance: none;
-    background-image: url("../../../images/flechadown.png");
+    background-image: url("::headerFooterServer::/images/flechadown.png");
     background-repeat: no-repeat;
     background-position: 98% 40%;
     padding-bottom: 10px;
@@ -3027,7 +3027,7 @@ body.MacOS .cuestionarios .primary-button, body.MacOS .registros_block article .
     border-radius: 30px;
     width: 28px;
     height: 28px;
-    background: url(../../../images/add-plus.png) no-repeat;
+    background: url(::headerFooterServer::/images/add-plus.png) no-repeat;
     background-size: 100% 100%;
     position: absolute;
     top: 50%;
@@ -3384,7 +3384,7 @@ body.MacOS .cuestionarios .primary-button, body.MacOS .registros_block article .
     margin-left: 7px;
     width: 10px;
     height: 10px;
-    background: url(../../../images/top-green-arrow.svg) no-repeat;
+    background: url(::headerFooterServer::/images/top-green-arrow.svg) no-repeat;
     background-size: 100%}
 .tab_registro .container {
     padding: 15px;
@@ -3551,7 +3551,7 @@ body.MacOS .cuestionarios .primary-button, body.MacOS .registros_block article .
     margin-right: 4px;
     width: 10px;
     height: 10px;
-    background: url(../../../images/top-green-arrow.svg) no-repeat;
+    background: url(::headerFooterServer::/images/top-green-arrow.svg) no-repeat;
     background-size: 100%}
 .page_text .sidebar_personas h1 {
     font-size: 1.25em;
@@ -3707,7 +3707,7 @@ aside p.registros {
     margin-right: 7px;
     width: 10px;
     height: 10px;
-    background: url(../../../images/top-green-arrow.svg) no-repeat;
+    background: url(::headerFooterServer::/images/top-green-arrow.svg) no-repeat;
     background-size: 100%}
 .page_text .ul-sidebar-arrow, .ul-sidebar-arrow {
     padding-left: 0;
@@ -3736,7 +3736,7 @@ aside p.registros {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(../../../images/top-green-arrow.svg) no-repeat;
+    background: url(::headerFooterServer::/images/top-green-arrow.svg) no-repeat;
     background-size: 100%;
     position: absolute;
     top: 6px;
@@ -4899,7 +4899,7 @@ header#masthead #site-menu nav.navbar .navbar-collapse ul.navbar-nav li a {
     display: block;
     width: 24px;
     height: 24px;
-    background: url(../../../images/search-icon.svg) no-repeat;
+    background: url(::headerFooterServer::/images/search-icon.svg) no-repeat;
     background-size: 100%;
     position: absolute;
     right: 26px;
@@ -4930,7 +4930,7 @@ header#masthead #site-menu nav.navbar .navbar-collapse ul.navbar-nav li a {
     margin-right: 10px;
     width: 10px;
     height: 10px;
-    background: url(../../../images/top-white-arrow.svg) no-repeat;
+    background: url(::headerFooterServer::/images/top-white-arrow.svg) no-repeat;
     background-size: 100%}
 }@media screen and (max-width:500px) {
     .gp_text.post_text, .page_text.post_text {
