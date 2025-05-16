@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "@sentry/browser": "^9.19.0",
     "bent": "^7.3.12",
     "countup.js": "^2.8.0",
     "domurl": "^2.3.4",
@@ -34,6 +35,7 @@
     "i18next-http-backend": "^2.5.2",
     "i18next-localstorage-cache": "^1.1.1",
     "jquery-i18next": "^1.2.1",
-    "js-cookie": "^3.0.5"
+    "js-cookie": "^3.0.5",
+    "url-polyfill": "^1.1.13"
   }
 }
