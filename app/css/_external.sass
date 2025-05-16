@@ -1,0 +1,1724 @@
+@import mixins
+.flex
+    display: flex !important
+    &.wrap
+        flex-wrap: wrap !important
+    &.center
+        justify-content: center !important
+    &.aiCenter
+        align-items: center !important
+    &.end
+        justify-content: flex-end !important
+    &.column
+        flex-direction: column !important
+a
+    &:hover
+        text-decoration: underline !important
+    &.more_link, &.url, &.mail, &.download, &.altaregistrolink
+        &::before
+            line-height: inherit
+            font-size: inherit!important
+            opacity: 1
+            margin-right: 0.3em
+            right: auto
+            font-family: ETmodules!important
+            font-weight: 400!important
+    &.more_link
+        &::before
+            content: "P"
+    &.url
+        &::before
+            content: ""
+    &.mail
+        &::before
+            content: ""
+    &.download
+        &::before
+            content: ""
+    &.altaregistrolink
+        display: inline-block
+        &::before
+            font-size: 20px !important
+            content: ""
+        &:hover
+            color: $colorSecundario !important
+h1, h2
+    line-height: 1.2em
+h3
+    margin-top: 20px
+h2, h3, h4, h5
+    font-weight: 300
+    a
+        font-weight: 300 !important
+        color: $colorPrincipal !important
+        &:hover
+            color: $colorSecundario !important
+p
+    line-height: 1.9em
+    &.leyenda
+        padding-left: 25px
+        position: relative
+        margin-top: 10px
+        display: flex
+        align-items: center
+        font-size: 0.9em
+        line-height: 0.8em
+        &::before
+            content: ''
+            position: absolute
+            left: 0
+            width: 20px
+            height: 12px
+            background-color: $colorPrincipal
+.et_pb_section
+        background-color: #edf3f3
+.entry-content
+    background-color: #edf3f3
+.migasPan
+    margin-bottom: 30px
+    font-size: 13px
+    position: sticky
+    top: 70px
+    padding: 10px 7%
+    background-color: #fff
+    z-index: 9
+    -webkit-box-shadow: 0px 3px 10px 2px rgba(0,0,0,0.1)
+    box-shadow: 0px 3px 10px 2px rgba(0,0,0,0.1)
+    a
+        color: $colorPrincipal
+.blanco
+    color: #fff !important
+    a
+        color: #fff !important
+.paginacion
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    .page-numbers
+        padding: 5px 10px
+        margin: 3px
+        color: #000 !important
+        display: inline-block
+    a
+        &.page-numbers
+            background-color: $verdeClaro
+            &.prev, &.next
+                background-color: transparent
+                .fl-dch, .fl-izq
+                    width: 9px
+                    height: 15px
+                    background-repeat: no-repeat
+                .fl-dch
+                    transform: rotate(180deg)
+.hidden
+    display: none!important
+.sr-only
+    position: absolute
+    width: 1px
+    height: 1px
+    padding: 0
+    margin: -1px
+    overflow: hidden
+    clip: rect(0, 0, 0, 0)
+    border: 0
+.page-load-status
+    display: none
+    padding-top: 20px
+    text-align: center
+    color: #777
+    width: 100%
+    p
+        padding: 30px 0
+.loader
+    border: 4px solid #fff
+    border-top: 4px solid $colorPrincipal
+    border-radius: 50%
+    width: 40px
+    height: 40px
+    animation: spin 1s linear infinite
+    margin: 30px auto
+span
+    &.close
+        position: absolute
+        right: 0
+        top: 0
+        width: 32px
+        height: 32px
+        opacity: 0.5
+        cursor: pointer
+        &:hover
+            opacity: 1
+        &::before, &::after
+            position: absolute
+            left: 15px
+            content: ' '
+            height: 33px
+            width: 2px
+            background-color: #333
+        &::before
+            transform: rotate(45deg)
+        &::after
+            transform: rotate(-45deg)
+.bloque50
+    width: 50%
+    padding: 10px
+.resultadosdatap
+    text-align: center
+    font-weight: bold
+    font-size: 20px
+    padding: 20px
+    background-color: #ccc
+    color: #000
+.boton_evento, .boton_noticia
+    border: 1px solid #ccc
+    display: inline-block
+    padding: 4px 10px
+.mb
+    &40
+        margin-bottom: 40px
+    &20
+        margin-bottom: 20px
+.mt40
+    margin-top: 40px
+.blogHorizontal
+    article
+        margin-bottom: 40px
+        border-bottom: 1px solid #ccc
+        background-color: #fff
+        padding: 20px
+        width: 100%
+.anchoTodo
+    width: 100%
+// CONTADOR DE NÚMEROS (HOME)
+.count
+    font-weight: 700
+    font-size: 32px
+    color: $azulClaro
+    line-height: 55px
+// TABLAS
+table
+    &.responsive
+        background-color: #fff
+        width: 100%
+        height: calc(100vh - 200px)
+        display: block
+        overflow: scroll
+        border: 1px solid #ccc !important
+        border-collapse: separate
+        &.recursos
+            height: 100%
+            overflow-y: hidden
+        thead
+            th
+                position: sticky
+                top: 0
+                background-color: #ccc
+                border-bottom: 1px solid #ccc !important
+                border-right: 1px solid #fff !important
+                &:first-child
+                    left: 0
+                    z-index: 99
+                &.descripcion
+                    min-width: 350px
+        tbody
+            tr
+                td
+                    border-top: 1px solid #ccc !important
+                    border-right: 1px solid #ccc !important
+                    &:first-child
+                        position: sticky
+                        left: 0
+                        background-color: #fff
+        input
+            margin-bottom: 10px
+            &[type="submit"]
+                color: #fff
+                background-color: $colorPrincipal
+                cursor: pointer
+                padding: 10px
+                border: 0
+                &:hover
+                    background-color: $colorSecundario
+// BOTONES
+.btn
+    border: 0
+    padding: 0 10px
+    border-radius: 3px
+    transition: all, ease, 0.3s
+    line-height: 1em
+    cursor: pointer
+    &::before
+        margin-right: 3px
+        font-family: ETmodules!important
+        font-size: 18px
+        display: inline-block
+    &.descargar
+        &::before
+            content: ""
+    &.boton_loadmore, &.load_more
+        &::before
+            content: "P"
+        &.disable
+            display: none
+    &.edit
+        display: inline-flex
+        &::before
+            content: "l"
+.bloqueFiltrar
+    background-color: $verdeClaro
+    color: #000
+    display: flex
+    align-items: center
+    padding: 4px 20px
+    &::before
+        content: 'f'
+        margin-right: 3px
+        margin-left: 10px
+        font-family: ETmodules!important
+        font-size: 18px
+        display: inline-block
+    &:hover
+        background-color: $otroVerde
+// ENLACES CON LÍNEA
+.post-meta, .enlaceLinea, .et_pb_text_inner, .contenido, .ficha, .barraLateral
+    a
+        color: $colorPrincipal !important
+        // box-shadow: inset 0 -0.07rem $colorPrincipal
+        // transition: box-shadow 0.2s ease-in-out
+        &::after
+            // content: ''
+            // display: block
+            // width: 0
+            // height: 1px
+            // background: $colorSecundario
+            // transition: width .3s
+        &:hover
+            color: $colorSecundario !important
+            // box-shadow: inset 0 -0.20rem $colorSecundario
+            &::after
+                // width: 100%
+// SLIDER
+.slider_software
+    width: 100%
+    ul.slick-dots
+        width: 100%
+        text-align: center
+        padding-left: 0
+        li
+            display: inline-block
+            margin: 0 2px
+            &::before
+                display: none
+            button
+                font-size: 0
+                border-radius: 100%
+                border: 2px solid $colorPrincipal
+                width: 11px
+                height: 11px
+                padding: 0
+            &.slick-active
+                button
+                    background-color: $colorPrincipal
+// HEADER
+header
+    position: relative
+    z-index: 9999
+    .et_pb_section
+        background-color: #fff
+    .elementosHeader
+        display: flex
+    // idiomas
+    .menuIdiomas
+        ul
+            padding: 0
+            li
+                &.wpml-ls-item
+                    a
+                        color: #666
+                        font-weight: normal
+                    &:not(.wpml-ls-current-language)
+                        a
+                            color: $colorPrincipal
+                    &:first-child
+                        border-right: 1px solid #ccc
+    // logo scroll
+    .et_pb_menu__logo
+        display: none
+    .has_et_pb_sticky
+        .et_pb_menu__logo
+            display: block
+            img
+                width: 100px
+// búsqueda
+#et-boc
+    header
+        .elementosHeader
+            .et_pb_search.search-icon
+                input
+                    &.et_pb_searchsubmit
+                        background: transparent !important
+                        color: transparent !important
+                        border: none
+                        width: 55px
+                        z-index: 2
+                    &.et_pb_s
+                        padding-right: 55px !important
+                .et_pb_searchform
+                    div
+                        &::before
+                            content: '\55'
+                            position: absolute
+                            font-family: 'ETModules'
+                            z-index: 1
+                            right: 0
+                            font-size: 20px
+                            padding: 8px 20px
+                            color: $colorPrincipal
+// PÁGINA CONTACTO
+.wpcf7-form
+    input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], select, textarea
+        width: 100% !important
+.wpcf7::-webkit-input-placeholder, .wpcf7:-moz-placeholder, .wpcf7::-moz-placeholder, .wpcf7:-ms-input-placeholder
+    font-size: 13px
+#responsive-form
+    margin: 0 auto
+    width: 100%
+    input
+        &[type="submit"]
+            color: #fff
+            background-color: $colorPrincipal
+            cursor: pointer
+            padding: 10px
+            border: 0
+            &:disabled
+                background-color: #ccc
+                cursor: not-allowed
+.form-row
+    width: 100%
+.column-half, .column-full, .column1-3, .column2-3
+    float: left
+    position: relative
+    padding: 0.65rem
+    width:100%
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+// ENLACES EN POSTS
+.single
+    article
+        &.post
+            padding-bottom: 0
+            margin-bottom: 15px
+            border-bottom: 1px solid #ccc
+            &:last-child
+                border-bottom: 0
+    .et_pb_post_content
+        a
+            color: $colorPrincipal !important
+            display: inline-block
+            &::after
+                content: ''
+                display: block
+                width: 0
+                height: 2px
+                background: #000
+                transition: width .3s
+            &:hover
+                color: $colorSecundario !important
+                &::after
+                    width: 100%
+// QUITAR SIDEBAR
+#main-content .container:before
+    background: none
+#sidebar
+    display: none
+// TEMPLATES
+.iniciativas_content
+    margin-bottom: 20px
+.sort-by-typo, .sort-by-registro
+    padding: 0 !important
+    display: flex
+    padding-left: 5px !important
+    li
+        display: inline-block
+        list-style: none
+        &::before
+            display: none !important
+        a
+            &::before
+                font-family: ETmodules
+                content: attr(data-icon) !important
+                speak: none
+                font-weight: 400
+                font-variant: normal
+                text-transform: none
+                line-height: 1
+                -webkit-font-smoothing: antialiased
+                font-size: 20px
+            &::after
+                display: none
+.registro_listado
+    margin-top: 20px
+    .head_registro
+        display: flex
+        position: sticky
+        top: 70px
+        background-color: #fff
+        border: 1px solid #ccc
+        .result
+            font-weight: bold
+            width: 33.33333333%
+            padding: 10px 20px
+            display: flex
+            &.tipo, &.registro
+                width: 16.66666667%
+    .bloques
+        background-color: #fff
+        border: 1px solid #ccc
+        border-top: 0
+        .reg_item
+            display: flex
+            .celda
+                width: 33.33333333%
+                padding: 10px 20px
+                &.tipo, &.registro
+                    width: 16.66666667%
+                h4.name
+                    color: $colorPrincipal
+                    &:hover
+                        color: $colorSecundario
+.tab_registro
+    ul
+        padding: 0
+        list-style: none
+        z-index: 99
+        li
+            margin: 5px
+            padding-top: 30px
+            padding-bottom: 15px
+            margin-right: 50px
+            list-style: none
+            display: inline-block
+            font-size: 22px
+            position: relative
+            a
+                color: $colorPrincipal
+                &:hover
+                    color: $colorSecundario
+            &.selected
+                color: #000
+                &::after, &::before
+                    bottom: -26px
+                    left: 50%
+                    border: solid transparent
+                    content: ""
+                    height: 0
+                    width: 0
+                    position: absolute
+                    pointer-events: none
+                &::after
+                    border-color: rgba(136, 183, 213, 0)
+                    border-bottom-color: #fff
+                    border-width: 24px
+                    margin-left: -24px
+                &::before
+                    border-color: rgba(194, 225, 245, 0)
+                    border-bottom-color: #ccc
+                    border-width: 26px
+                    margin-left: -26px
+.buscador
+    margin: 20px 0
+    width: 100%
+    position: relative
+    form
+        position: relative
+        &::before
+            position: absolute
+            right: 10px
+            top: 10px
+            font-family: ETmodules!important
+            content: "U"
+            speak: none
+            font-weight: 400
+            font-variant: normal
+            text-transform: none
+            line-height: 1
+            -webkit-font-smoothing: antialiased
+            color: $colorPrincipal
+            font-size: 22px
+    input
+        &[type=search]
+            width: 100%
+    .search-submit
+        background: rgba(0,0,0,0) !important
+        color: rgba(0,0,0,0) !important
+        border: none
+        width: 55px
+        z-index: 2
+        min-height: 100%!important
+        position: absolute
+        right: 0
+        top: 0
+        height: 100%
+        cursor: pointer
+.resultados
+    font-weight: bold
+    margin-top: 20px
+.herramientas_text
+    .bloquefiltros
+        ul
+            &.portematica
+                list-style: none
+.contenido
+    padding-top: 20px
+    &.dosCols
+        .modulo
+            width: 46%
+            margin: 2%
+    &.persona
+        h3
+            padding-top: 5px
+            margin-bottom: 6px
+            font-size: 18px
+            padding-bottom: 0
+            &::after
+                display: none
+    .kitadaptacion
+        display: flex
+        flex-direction: column
+        .kit_icons
+            display: flex
+            flex-direction: column
+            width: 100%
+            margin-bottom: 20px
+    .gp_links
+        position: fixed
+        left: 0
+        top: 300px
+        display: flex
+        flex-direction: column
+        li
+            display: flex
+            align-items: center
+            position: relative
+            span
+                visibility: hidden
+                opacity: 0
+                background-color: $colorSecundario
+                padding: 5px 10px
+                color: #fff
+                line-height: 34px
+                position: absolute
+                top: 0
+                left: 60px
+                width: 300px
+                @include transition(all, ease, 0.3s)
+                &::after
+                    right: 100%
+                    top: 50%
+                    border: solid transparent
+                    content: ""
+                    height: 0
+                    width: 0
+                    position: absolute
+                    pointer-events: none
+                    border-color: rgba(136, 183, 213, 0)
+                    border-right-color: $colorSecundario
+                    border-width: 10px
+                    margin-top: -10px
+            &::before
+                content: ''
+                border-radius: 100%
+                border: 2px solid $colorPrincipal
+                width: 15px
+                height: 15px
+                margin: 15px 23px
+                z-index: 3
+                position: relative
+                @include transition(all, ease, 0.3s)
+            &::after
+                display: none
+            &:hover
+                > span
+                    opacity: 1
+                    visibility: visible
+                &::before
+                    background: $colorSecundario
+            &.scroll_item_active
+                &::before
+                    background: $colorSecundario
+    .modulo
+        margin-bottom: 40px
+        display: flex
+        align-items: flex-start
+        border-bottom: 1px solid #ccc
+        background-color: #fff
+        padding: 20px
+        padding-right: calc(2% + 10px)
+        width: 100%
+        &.equipo
+            h3
+                font-weight: 400
+        &.servicios
+            img
+                width: 50px
+        &.guia
+            width: 46%
+            padding: 1%
+            a
+                margin: 0 auto
+            img
+                width: auto
+            p
+                text-align: center
+        .imagen
+            width: 150px
+            text-align: center
+            margin-right: 20px
+            img
+                width: 60px
+                margin-top: 40px
+        .datos
+            display: flex
+            flex-direction: column
+            flex: 1
+            h3
+                display: inline-block
+                margin-top: 0
+            .category
+                font-weight: bold
+                margin-bottom: 10px
+            a
+                word-break: break-all
+        &.proyecto-item, &.equipo, &.herramientas, &.repositorio-item, &.participa, &.datosBio, &.formaciononline, &.colaboracion
+            .imagen
+                img
+                    width: 100%
+    p
+        &.conFondo
+            background-color: #d7eae5
+            padding-bottom: 3px
+            margin-bottom: 19px
+            font-weight: 600
+            padding-left: 10px
+    .participantes_list, .herramientas_list
+        flex-direction: column
+    ul
+        list-style: none
+        &.gp_icons, &.guia
+            display: flex
+            padding: 0
+            flex-wrap: wrap
+            li
+                width: 33.333%
+                padding: 2%
+                text-align: center
+                &::before
+                    display: none
+        li
+            margin-bottom: 5px
+            &::before
+                content: '•'
+                margin-right: 5px
+                color: $colorPrincipal
+                display: inline-block
+                font-size: 20px
+    h3, h2
+        &::after
+            content: ''
+            display: block
+            width: 100%
+            height: 1px
+            background: $otroVerde
+            margin-top: 7px
+    h4
+        padding-bottom: 5px
+        padding-top: 10px
+    h5
+        padding-top: 20px
+        padding-bottom: 15px
+    .copyright
+        font-size: .9em
+.listado_circulares
+    li
+        a
+            &::before
+                line-height: inherit
+                font-size: inherit!important
+                opacity: 1
+                margin-right: 0.3em
+                right: auto
+                font-family: FontAwesome!important
+                font-weight: 900!important
+                content: ''
+.lineaTitulo
+    height: 23px
+    position: relative
+    &::before
+        content: ""
+        width: 100%
+        height: 1px
+        border-top: 1px solid $colorPrincipal
+        position: absolute
+        left: 0
+        top: 0
+        z-index: 10
+.barraLateral
+    background-color: #fff
+    padding: 2%
+    border-bottom: 1px solid #ccc
+    a
+        word-break: break-word
+    h5
+        padding-bottom: 5px
+        padding-top: 10px
+    h4
+        &.conLinea
+            margin-right: 5px
+            &::after
+                content: ''
+                display: block
+                width: 100%
+                height: 1px
+                background: $otroVerde
+                transition: width .3s
+    .bloque
+        margin-bottom: 20px
+        p
+            font-weight: 600
+    .titulo
+        &::before
+            margin-right: 8px
+            font-family: ETmodules!important
+            font-size: 18px
+            display: inline-block
+        &::after
+            content: ''
+            display: block
+            width: 100%
+            height: 1px
+            background: $otroVerde
+            margin-top: 7px
+        &.datos
+            &::before
+                content: ""
+        &.contacto
+            &::before
+                content: ""
+        &.portales
+            &::before
+                content: ""
+    p
+        &.dweb
+            word-break: break-all
+.ficha
+    ul
+        display: flex
+        padding: 0
+        list-style: none
+        li
+            padding: 1em
+            padding-top: 1.4em
+            display: flex
+            flex-direction: column
+            justify-content: center
+            flex: 1
+            border: 1px solid #d7d2d2
+            margin: 10px
+            text-align: center
+            background-color: #fff
+.coleccion_info, .galeria_post, .enlaces_interes, .documentos_interes, .secondary-content.programa, .listado_participantes, .listado_participantes
+    padding: 2% 0
+.coleccion_info
+    ul
+        &.metadatos
+            li
+                background-color: #fff
+                border-bottom: 1px solid #ccc
+                padding: 20px
+                margin-bottom: 40px
+                &::before
+                    display: none
+            .tableICA
+                margin-top: 25px
+                border: 1px solid #d7d2d2
+                thead
+                    th
+                        background-color: #d7d2d2
+                tr
+                    td
+                        border-top: 1px solid #d7d2d2
+            h4
+                margin-bottom: 15px
+                font-weight: bold
+            span
+                &.boton
+                    background-color: $colorPrincipal
+                    padding: 5px 10px
+                    font-size: 16px
+                    margin-right: 10px
+                    a
+                        color: #fff !important
+.documentos_interes, .enlaces_interes
+    a
+        display: block
+        margin-bottom: 10px
+.secondary-content
+    &.programa
+        padding: 30px
+        background-color: #dee9ea
+        margin: 30px 0
+        h3
+            margin-top: 0
+.coleccion-submenu
+    display: flex
+    flex-direction: column
+    right: 0
+    top: 250px
+    position: fixed
+    z-index: 99
+    a
+        padding: 10px 5px
+        margin-bottom: 5px
+        border-left: 6px solid $azulClaro
+        border-bottom: 1px solid $azulClaro
+        background-color: #fff
+        color: #000 !important
+        text-align: center
+        border-radius: 0
+        width: 200px
+        display: flex
+        align-items: center
+        justify-content: center
+        position: relative
+        @include transition(all, ease, 0.3s)
+        &::after
+            font-size: 25px
+            font-family: ETmodules !important
+            color: $azulClaro
+            display: flex
+            align-items: center
+            justify-content: center
+            position: absolute
+            top: 0
+            right: -30px
+            width: 30px
+            height: 100%
+            transition: all 0.2s linear 0s
+        &:hover
+            text-decoration: none !important
+            text-indent: -30px
+            &::after
+                right: 0
+                text-indent: 0px
+        &.info
+            &::after
+                content: 'p'
+        &.digitalizacion
+            &::after
+                content: ''
+        &.mapa
+            &::after
+                content: ''
+        &.estadisticas
+            &::after
+                content: ''
+        &.recursos
+            &::after
+                content: 'i'
+.listado_participantes
+    margin-top: 20px
+.zonadescargas, .especificaciones, .software
+    .contenido
+        display: flex
+        flex-wrap: wrap
+        h3
+            width: 100%
+        .item
+            width: 25%
+            text-align: center
+            padding: 2%
+            p
+                font-size: 1.25em
+                margin-top: 20px
+.especificaciones
+    background-color: $colorSecundario !important
+    padding: 0
+    .contenido
+        .item
+            img
+                max-height: 62px
+            p
+                color: #fff
+.software
+    .contenido
+        .item
+            width: 50%
+.galeria_post
+    display: flex
+    flex-wrap: wrap
+    h3
+        width: 100%
+    .gal_item
+        width: 31.333%
+        margin: 1%
+// cuestionarios
+.cuestionarios
+    h3
+        margin-top: 35px
+    h4
+        padding-bottom: 20px
+        line-height: 1.4em
+    .contact-info
+        &.other
+            border: 1px solid #ccc
+            background-color: #fff
+            padding: 10px
+            h4
+                position: relative
+    .input-field
+        padding-left: 8px
+        padding-right: 8px
+        margin-bottom: 20px
+    .error
+        input, textarea, select
+            border-color: #eb8678
+    .show-field
+        &.sfhide
+            display: none
+    input
+        &[type="submit"]
+            background-color: $colorPrincipal
+            color: #fff
+            padding: 10px
+            cursor: pointer
+            border-radius: 0
+            &:hover
+                background-color: $colorSecundario
+        &[id^="cuest_name"], &[id^="cuest_col_name"],  &[id^="cuest_email"],  &[id^="cuest_contact_email"], &[id^="cuest_other_tipoej"], &[id^="cuest_nro"], &[id^="cuest_isinv_perc"], &[name^="cuest_web"], &[id^="cuest_accecol_other"], &[id^="cuest_programa_other"], &[id^="cuest_programa_ver"], &[name^="cuest_ocontact_email"], &#cuest_link_maps, &[id^="cuest_origen_other"], &[id^="cuest_other_type"], &#cuest_logo_url
+            min-width: 350px
+        &#cuest_modo_citar, &[id^="cuest_medioacce_other"], &#cuest_medioacce_internet, &#cuest_dir, &#cuest_contact_dir, &[name^="cuest_ocontact_dir"], &[id^="cuest_lines"]
+            width: 100%
+    textarea
+        min-height: 140px
+        &[id^="cuest_desc"], &[id^="cuest_aviso_usu"], &[id^="cuest_lines"], &[id^="cuest_objetivos"], &[id^="cuest_cobertura"], &[id^="cuest_ambito_geo"], &[id^="cuest_perc_geo"], &[id^="cuest_pubrel"], &[id^="cuest_obs"], &[id^="cuest_goals"]
+            width: 100%
+    ul
+        li
+            &::before
+                display: none
+    .bloque
+        margin-bottom: 20px
+    .add-field
+        position: relative
+        &.add-lang, &.add-personal, &.add-web, &.add-contact
+            display: flex
+            color: $colorPrincipal
+            cursor: pointer
+            margin-bottom: 20px
+            &:hover
+                color: $colorSecundario
+            &::before
+                margin-right: 3px
+                font-family: ETmodules !important
+                font-size: 18px
+                display: inline-block
+                content: "P"
+        &.add-lang
+            width: 260px
+            margin-top: 10px
+            .langs-to-add
+                opacity: 0
+                background: #fff
+                border: 1px solid #ccc
+                padding: 10px
+                position: absolute
+                top: 100%
+                left: 40px
+                z-index: -1
+                -webkit-transition: all .3s ease-out
+                transition: all .3s ease-out
+                -moz-transform: translateY(-20px)
+                -o-transform: translateY(-20px)
+                -ms-transform: translateY(-20px)
+                -webkit-transform: translateY(-20px)
+                transform: translateY(-20px)
+                display: flex
+                flex-direction: column
+                .show
+                    margin: 5px
+            &.hover
+                .langs-to-add
+                    opacity: 1
+                    z-index: 1
+                    -moz-transform: translateY(0)
+                    -o-transform: translateY(0)
+                    -ms-transform: translateY(0)
+                    -webkit-transform: translateY(0)
+                    transform: translateY(0)
+        .plus
+.cuestionario-para-colecciones-biologicas-y-base-de-datos
+    background-color: #fff
+    border: 1px solid #ccc
+    padding: 10px
+    margin: 20px 0
+    ul
+        padding: 0
+        li
+            padding: 10px 0
+            &::before
+                display: none
+// calendarios ui-datepicker
+.ui-datepicker-inline
+    width: 100% !important
+    .ui-datepicker-header
+        .ui-datepicker-title
+            font-size: 1.3em
+            line-height: 1.3em
+#ui-datepicker-div, .ui-datepicker-inline
+    width: 240px
+    text-align: center
+    background: #fff
+    margin-top: 30px
+    padding: 10px
+    border: 1px solid #bbb
+    .evento, .event
+        background-color: $colorPrincipal
+        a
+            color: #fff
+    .ui-datepicker-header
+        position: relative
+        font-size: 1.1875em
+        .ui-datepicker-prev, .ui-datepicker-next
+            cursor: pointer
+        .ui-datepicker-prev
+            position: absolute
+            left: 14px
+        .ui-datepicker-next
+            position: absolute
+            right: 14px
+        .ui-datepicker-title
+            text-align: center
+#ui-datepicker-div, .ui-datepicker-inline
+    table
+        &.ui-datepicker-calendar
+            tr
+                th, td
+                    padding: 5px
+.page-template-template-cuestionario-coleccion-biologica, .page-template-template-cuestionario-basedatos
+    #ui-datepicker-div
+        table
+            &.ui-datepicker-calendar
+                width: 100%
+    .ui-datepicker
+        .ui-datepicker-header
+            margin: 12px 10px 0
+// FILTROS
+.filters_button
+    display: flex
+    span
+        color: #fff
+        background-color: $colorPrincipal
+        cursor: pointer
+        padding: 5px 20px
+        &::after
+            line-height: inherit
+            font-size: 18px !important
+            opacity: 1
+            margin-left: 0.3em
+            right: auto
+            font-family: ETmodules!important
+            font-weight: 400!important
+        &:hover
+            background-color: $colorSecundario
+    .active
+        display: block
+        &.off
+            display: none
+        &::after
+            content: ':'
+    .desactive
+        display: none
+        &::after
+            content: ';'
+        &.on
+            display: block
+.filters
+    border: 1px solid $colorPrincipal
+    padding: 20px
+    background-color: #fff
+    h3
+        font-size: 15px
+    h4
+        font-size: 14px
+    input, textarea, select
+        padding: 10px
+    input
+        &[type="submit"]
+            cursor: pointer
+            border: 0
+            background-color: transparent
+            color: #000
+        &:hover
+            background-color: transparent
+        &#search_term
+            min-width: 350px
+    form
+        display: flex
+        flex-wrap: wrap
+    .category_filter
+        padding: 20px
+        float: left
+        .filtraRango
+            display: flex
+            list-style: none
+            padding: 0
+            li
+                margin: 10px
+                display: flex
+                align-items: center
+                h4
+                    margin-right: 5px
+                    padding-bottom: 0
+                input
+                    margin-right: 5px
+                    display: inline-block
+            img
+                &.ui-datepicker-trigger
+                    cursor: pointer
+                    max-width: 27px
+                    display: inline-block
+                    width: 27px
+                    vertical-align: top
+        .portematica
+            display: flex
+            flex-wrap: wrap
+            list-style: none
+            padding-left: 20px
+            padding-bottom: 0
+            list-style: none
+            li
+                cursor: pointer
+                padding: 2px 10px
+                margin: 5px
+                border: 1px solid $colorPrincipal
+                color: $colorPrincipal
+                &:hover
+                    border: 1px solid $colorSecundario
+                    color: $colorSecundario
+                &.is-checked
+                    color: #fff
+                    background-color: #008c8a
+                    border: 1px solid #008c8a
+                &::before
+                    display: none
+        .sort-by
+            list-style: none
+            .bloque1, .bloque2
+                margin: 0 5px
+    select
+        max-width: 100%
+// POPUPS
+#popups
+    position: fixed
+    display: none
+    width: 100%
+    height: 100%
+    overflow: hidden
+    top: 0
+    left: 0
+    z-index: 99999
+    #popup-layer
+        position: absolute
+        display: block
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        z-index: 1
+        background-color: rgba(0,0,0,.6)
+    .popup-container
+        position: absolute
+        display: none
+        width: 100%
+        overflow: auto
+        max-width: 600px
+        min-height: 385px
+        max-height: 100%
+        background-color: rgba(255,255,255,.97)
+        padding: 25px
+        margin: auto
+        top: 50%
+        transform: translateY(-50%)
+        left: 0
+        right: 0
+        z-index: 2
+    .popup-close
+        position: absolute
+        display: block
+        width: 16px
+        height: 16px
+        top: 15px
+        right: 15px
+        z-index: 3
+        cursor: pointer
+        img
+            width: 16px
+// FORMS
+input.text, input.title, input[type=email], input[type=date], input[type=search], input[type=password], input[type=tel], input[type=text], select, textarea
+    padding: 10px
+    border: 1px solid #ccc
+textarea
+    &::placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder, &::-webkit-input-placeholder
+    color: #4e4e4e
+    opacity: 1
+.frm-popup
+    input
+        width: 100%
+        margin-bottom: 10px
+    .checks
+        display: flex
+        flex-wrap: wrap
+        margin-bottom: 15px
+        .check
+        span
+            flex: 1
+            padding-left: 10px
+            font-size: 13px
+            line-height: 16px
+    .info
+        font-size: 11px
+        line-height: 16px
+        margin-bottom: 15px
+    button
+        &[type="submit"]
+            background-color: $colorPrincipal
+            color: #fff
+            padding: 10px
+            font-size: 14px
+            border: 0
+            cursor: pointer
+            margin-left: auto
+            &:hover
+                background-color: $colorSecundario
+// MAGNIFIC POPUP
+.mfp-arrow
+    position: absolute !important
+    opacity: .65 !important
+    filter: alpha(opacity=65) !important
+    margin: 0 !important
+    top: 50% !important
+    margin-top: -55px !important
+    padding: 0 !important
+    width: 90px !important
+    height: 110px !important
+    -webkit-tap-highlight-color: transparent !important
+    &::before, &::after, .mfp-b, .mfp-a
+        border: medium inset transparent !important
+    &::after, .mfp-a
+        border-top-width: 13px !important
+        border-bottom-width: 13px !important
+        top: 8px !important
+.mfp-arrow::after, .mfp-arrow::before
+    width: 0 !important
+    height: 0 !important
+.mfp-arrow-left
+    &::after, .mfp-a
+        border-right: 17px solid #FFF !important
+        margin-left: 31px !important
+.mfp-arrow-right
+    &::after, .mfp-a
+        border-left: 17px solid #fff !important
+        margin-left: 39px !important
+// FOOTER
+footer
+    .et-menu.nav
+        flex-direction: column
+    .et_pb_section
+        background-color: #fff !important
+    .hideMobileMenu
+        .et_mobile_nav_menu
+            display: none
+// deshabilitar menú superior para móvil
+.lwp-hide-mobile-menu.et_pb_menu .et_pb_menu__menu,.lwp-hide-mobile-menu.et_pb_fullwidth_menu .et_pb_menu__menu
+    display: flex!important
+.lwp-hide-mobile-menu .et_mobile_nav_menu
+    display: none
+// MEDIA QUERIES
+@media (min-width: 768px) and (max-width: 980px)
+    .lwp-hide-mobile-menu.et_pb_menu .et_pb_menu__menu,.lwp-hide-mobile-menu.et_pb_fullwidth_menu .et_pb_menu__menu
+        display: flex!important
+    .lwp-hide-mobile-menu .et_mobile_nav_menu
+        display: none
+@media (min-width: 981px)
+    .entry-content, .home
+        .et_pb_row:not(.et_pb_row_0_tb_footer)
+            width: 86% !important
+            max-width: 86% !important
+            // &.et_pb_equal_columns
+            //     margin-right: auto !important
+            //     margin-left: 0 !important
+    header
+        .elementosHeader
+            align-items: center
+            justify-content:flex-start
+            .tituloHeader
+                margin-top: 26px
+                margin-left: 15px
+            .search-icon
+                margin-left: auto
+        .menuGbif
+            padding: 0 !important
+        .menuPrincipal
+            padding: 0
+            .et_pb_menu__wrap
+                justify-content: center
+            nav
+                > ul
+                    &.sub-menu
+                        top: 64px !important
+                    > li
+                        margin: 0 !important
+                        &.menu-item-has-children
+                            > a
+                                &:first-child
+                                    &::after
+                                        top: 27px !important
+                        > a
+                            padding-top: 28px !important
+                            padding-bottom: 28px !important
+            ul
+                &.sub-menu
+                    border-top-width: 6px
+                    padding: 0 !important
+                    top: -6px
+                    li
+                        padding: 0 !important
+                        width: 100%
+                        border-bottom: 1px solid #d7d2d2
+                        a
+                            padding: 6px 10px !important
+                            width: 100% !important
+                            &::after
+                                transform: rotate(-90deg)
+        .et_pb_menu__menu
+            >nav
+                >ul
+                    >li
+                        &.wpml-ls-item
+                            display: none !important
+    .column-half
+        width: 50%
+    .column1-3
+        width: 33%
+    .column2-3
+        width: 66%
+    #left-area
+        width: 100%
+        padding: 23px 0px 0px !important
+        float: none !important
+    .noticiasDestacadasHome
+        display: grid !important
+        grid-template-columns: repeat(6, 1fr)
+        grid-template-rows: repeat(2, 165px)
+        grid-gap: 10px
+        .et_pb_column
+            &:first-child, &:last-child
+                width: 100% !important
+            &:first-child
+                grid-column-start: 1
+                grid-column-end: 3
+                grid-row-start: 1
+                grid-row-end: 3
+                article
+                    margin-bottom: 10px
+                    height: 50%
+                    overflow: hidden
+                    &:first-child
+                        height: calc( 50% - 10px )
+                    &:last-child
+                        margin-bottom: 0
+                .et_pb_module, .et_pb_ajax_pagination_container
+                    height: 100%
+            &:last-child
+                grid-column-start: 3
+                grid-column-end: 7
+                grid-row-start: 1
+                grid-row-end: 3
+                .et_pb_module, .et_pb_ajax_pagination_container, article
+                    height: 100%
+                .entry-featured-image-url
+                    height: 100%
+                    overflow: hidden
+                .wpb-blog-text
+                    padding: 20px
+    .noticiasHome
+        .et_pb_ajax_pagination_container
+            display: flex
+            align-items: stretch
+        .et_pb_post
+            width: 23%
+            margin: 0 1%
+            .entry-featured-image-url
+                height: 160px
+                overflow: hidden
+                display: flex
+                justify-content: center
+                img
+                    height: 100%
+                    max-width: none
+                    object-fit: cover
+@media (min-width: 768px)
+    .blogHorizontal
+        article
+            &.et_pb_post
+                .entry-featured-image-url
+                    width: 250px
+                    text-align: center
+                    margin-right: 30px
+                    float: left
+            &:last-child
+                margin-bottom: 0
+    .contenido
+        .modulo
+            &.grande
+                flex-direction: column
+                width: 46%
+                margin-right: 4%
+                &:last-child
+                    margin-right: 0
+                .imagenG
+                    img
+                        width: 100%
+@media (max-width: 980px)
+    #main-header
+        &.et-fixed-header
+            position: fixed
+    .logged-in
+        #main-header
+            &.et-fixed-header
+                top: 0 !important
+                transition: all .3s 0s
+    .migasPan
+        top: 52px
+    .ficha
+        ul
+            flex-direction: column
+            text-align: center
+    .et_pb_row
+        width: 90%
+    table
+        &.responsive
+            margin-bottom: 0
+            overflow: hidden
+            overflow-x: scroll
+            display: block
+            white-space: nowrap
+    header
+        .menuGbif
+            padding: 10px 0 !important
+            #mobile_menu2
+                > li
+                    > ul
+                        &.sub-menu
+                            > li
+                                > a
+                                    font-weight: 600
+            ul
+                &.et_mobile_menu
+                    overflow: scroll !important
+                    max-height: calc(100vh - 52px)
+                    top: 42px
+                    > li
+                        > a
+                            font-weight: 700
+                    li
+                        &.current-menu-item
+                            > a
+                                color: #fff !important
+                        li
+                            padding-left: 0
+                            margin-left: 5%
+        .mobile_nav
+            .mobile_menu_bar
+                &::before
+                    color: #fff !important
+        .et_pb_menu_0_tb_header
+            &.et_pb_menu
+                .et_mobile_menu
+                    border-top-width: 6px
+                    height: 84vh
+                    margin-top: 4px
+                    overflow-y: scroll
+                    li
+                        &.current-menu-item
+                            background-color: $colorPrincipal
+        .elementosHeader
+            flex-wrap: wrap
+            align-items: center
+            .tituloHeader
+                font-size: 20px
+            .search-icon
+                order: 3
+        .menuPrincipal
+            &.et_pb_menu
+                .et_pb_menu__wrap
+                    justify-content: flex-end
+    .noticiasDestacadasHome
+        @include flexbox()
+        @include flex-direction(column)
+        .wpb-blog
+            .et_pb_post
+                .entry-featured-image-url
+                    img
+                        width: 100%
+                        height: auto
+            .wpb-blog-text
+                position: relative
+                background-color: transparent
+                h2
+                    &.entry-title
+                        a
+                            color: $colorPrincipal !important
+                .post-content
+                    p
+                        color: #666
+        .et_pb_column
+            &:first-child
+                order: 2
+                article
+                    margin-bottom: 1%
+            &:last-child
+                order: 1
+                article
+                    margin-bottom: 1%
+            &:first-child, &:last-child
+                width: 100% !important
+                margin-right: 0 !important
+                margin-bottom: 0
+    .noticiasHome
+        article
+            padding-top: 10px
+            .entry-featured-image-url
+                margin: 0
+                margin-top: 10px
+@media (max-width: 767px)
+    .especificaciones, .zonadescargas, .software
+        .contenido
+            .item
+                width: 100%
+    .filters_button
+        > span
+            width: 100%
+            text-align: center
+    h2
+        font-size: 22px
+    h3
+        font-size: 20px
+    header
+        .elementosHeader
+            .et_pb_image
+                img
+                    width: 80px
+            .tituloHeader
+                width: calc(100% - 100px)
+                font-size: 12px
+                p
+                    line-height: 1.4em
+            .search-icon
+                flex: 1
+    footer
+        .et_pb_module
+            text-align: center
+        .footerBottom
+            .et_pb_module
+                margin-bottom: 20px !important
+    .barraLateral
+        padding-top: 20px
+        margin-bottom: 30px !important
+    .contenido
+        .modulo
+            flex-direction: column
+            align-items: normal
+            .imagen, .imagenG
+                width: 100%
+                margin-right: 0
+                margin-bottom: 20px
+            a
+                > img
+                    width: 100%
+                    margin-left: 0
+                    margin-right: 0
+                    margin-bottom: 15px
+        &.dosCols
+            .modulo
+                width: 100%
+                margin: 2%
+                &.equipo
+                    flex-direction: column
+                    align-items: center
+                    .datos
+                        align-items: center
+        .gp_links
+            display: none
+        ul
+            &.guia, &.gp_icons
+                li
+                    width: 50%
+@media (max-width: 600px)
+    .filters
+        .category_filter
+            .filtraRango
+                flex-direction: column
+        input
+            &#search_term
+                min-width: 100%
+@media print
+    body
+        font-size: 11pt
+        line-height: 1.5
+    #descargarficha, .coleccion-submenu
+        display: none
+    h1
+        font-size: 26px
+        page-break-before: always
+        line-height: 1.3
+    h1, h2, h3, h4, h5, h6
+        page-break-after: avoid
+        page-break-inside: avoid
+        line-height: normal
+        display: block
+        padding-bottom: 0
+        margin: 0
+        + p
+            page-break-before: avoid
+    table, figure
+        page-break-inside: avoid
+    .barraLateral
+        .titulo
+            display: block
+            border-bottom: 1px solid $otroVerde
+            padding-bottom: 0
+            &::before, &::after
+                display: none
+        .bloque
+            p
+                padding-bottom: 0
+    .ficha
+        ul
+            display: block
+            li
+                padding: 10px
+                margin: 5px
+                display: inline-block
+                border: 0
+                h6
+                    display: inline-block
+                    padding-bottom: 0
+                strong
+                    display: inline-block
+    p
+        line-height: normal
+    img
+        max-width: 200px
