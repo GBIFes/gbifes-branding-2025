@@ -89,6 +89,8 @@ if [ "$DEPLOY" = "datos" ] || [ "$DEPLOY" = "both" ]; then
   curl -s https://regiones.gbif.es/headerFooter/clearCache && \
   curl -s https://auth.gbif.es/userdetails/headerFooter/clearCache && \
   curl -s https://colecciones.gbif.es/headerFooter/clearCache
+else
+  curl -s https://especies.gbif.es/headerFooter/clearCache
 fi
 
 cp app/js/settings-demo.js app/js/settings.js
