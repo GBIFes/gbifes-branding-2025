@@ -18,3 +18,4 @@ import './tooltip.js';
 import './top-search.js';
 import './i18n_init.js';
 import './i18n_menus.js';
+import './breadcrumb-workaround.js';
