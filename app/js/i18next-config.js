@@ -153,6 +153,8 @@ i18n.use(backend)
         document.location.search = currentUrl.query;
       }
 
+      document.querySelector('.gbifes-head-links').style.visibility = 'visible';
+
       // cookies eu consent
       /* const cookiesOpt = {
        *   cookieTitle: t('Uso de Cookies'),
