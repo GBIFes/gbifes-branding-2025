@@ -1,5 +1,8 @@
 import gbifesjs from './settings.js';
-import './jquery-eu-cookie-law-popup';
+import { mountCookieConsent } from './cookie-consent.js'
+
+
+
 
 const locale = window.i18next.language;
 const enabledLangs = gbifesjs.enabledLangs;
@@ -34,22 +37,10 @@ function i18n_menus() {
     if (gbifesjs.isDevel) console.log(`Added lang to href: ${localeUrl}`);
   });
 
-  const t = window.i18next.t;
+  // const t = window.i18next.t;
 
-  $(document).euCookieLawPopup().init({
-    cookiePolicyUrl: 'https://www.gbif.es/politica-de-cookies/',
-    popupPosition: 'bottom',
-    colorStyle: 'gbif',
-    compactStyle: true,
-    popupTitle: '',
-    popupText: t('cookie_message'),
-    buttonContinueTitle: t('cookie_accept_btn'),
-    buttonLearnmoreTitle: t('cookie_policy_btn'),
-    buttonLearnmoreOpenInNewWindow: true,
-    agreementExpiresInDays: 30,
-    autoAcceptCookiePolicy: false,
-    htmlMarkup: null
-  });
+  mountCookieConsent(`https://www.gbif.es/${window.i18next.resolvedLanguage || 'es'}/politica-de-cookies/`);
+  console.log('Added cookie consent');
 }
 
 // Inicialización tras carga del DOM y elementos
