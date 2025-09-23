@@ -1,5 +1,6 @@
 .logo-brand > .brand-layout-control > .img-responsive {
-  content:url("::headerFooterServer::/images/favicon-gbif.png") !important;
+  content:url("https://datos.gbif.es/images/favicon-gbif.png") !important;
+  height: 200px;
 }
 
 /* TODO: do this in code */
