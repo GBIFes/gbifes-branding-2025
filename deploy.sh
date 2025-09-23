@@ -66,7 +66,9 @@ fi
 
 if [ "$DEPLOY" = "demo" ] || [ "$DEPLOY" = "both" ]; then
   rsync -a --delete $DEST/ demo.gbif.es:/srv/demo.gbif.es/www/brand-2025-vite/
+  rsync -a --delete $DEST/ demo.gbif.es:/srv/auth.gbif.es/www/brand-2025-vite/
   rsync -a $DEST/ demo.gbif.es:/srv/demo.gbif.es/www/
+  rsync -a $DEST/ demo.gbif.es:/srv/auth.gbif.es/www/
 fi
 
 if [ "$BUILDER" = "brunch" ]; then
@@ -79,7 +81,9 @@ fi
 
 if [ "$DEPLOY" = "datos" ] || [ "$DEPLOY" = "both" ]; then
   rsync -a --delete $DEST/ datos.gbif.es:/srv/auth.gbif.es/www/brand-2025-vite/
+  rsync -a --delete $DEST/ demo.gbif.es:/srv/auth.gbif.es/www/brand-2025-vite/
   rsync -a $DEST/ datos.gbif.es:/srv/auth.gbif.es/www/
+  rsync -a $DEST/ demo.gbif.es:/srv/auth.gbif.es/www/
   curl -s https://registros.gbif.es/headerFooter/clearCache && \
   curl -s https://especies.gbif.es/headerFooter/clearCache && \
   curl -s https://listas.gbif.es/headerFooter/clearCache && \
