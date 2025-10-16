@@ -22,7 +22,7 @@ const toReplace = [
 ];
 
 const toReplaceOthers = [
-  /banner\.html$/, /footer\.html$/, ...toReplace
+  /head\.html$/, /banner\.html$/, /footer\.html$/, ...toReplace
 ];
 
 const r = (files, find, replace) => ({ files, match: { find, replace } });
@@ -68,16 +68,15 @@ const replacements = Object.fromEntries(
   Object.entries(fragmentFiles).map(([k, f]) => {
     let raw = fs.readFileSync(f, 'utf8');
     raw = prefixStaticUrls(raw, baseUrl);
-    raw = applyRulesToText(raw, f);
     return [k, raw];
   })
 );
 
 const rules = [
-  ...rulesBase,
   ...Object.entries(fragmentFiles).map(([key]) =>
-    r(toReplace, key, replacements[key])
-  )
+    r(toReplaceOthers, key, replacements[key])
+  ),
+  ...rulesBase
 ];
 
 function prefixStaticUrls(html, baseUrl) {
@@ -107,16 +106,19 @@ function injectThemeCssLinks(theme) {
 
   return {
     name: 'inject-theme-css-links',
-    transformIndexHtml(html) {
-      const links = files.map(file => ({
-        tag: 'link',
-        attrs: {
-          rel: 'stylesheet',
-          href: `${baseUrl}/${file}`,
-          'data-theme': theme
-        },
-        injectTo: 'head'
-      }));
+    transformIndexHtml(html, ctx) {
+      const doTransform = html.includes('<head>') || ctx.path.endsWith('head.html');
+      const links = doTransform
+        ? files.map(file => ({
+            tag: 'link',
+            attrs: {
+              rel: 'stylesheet',
+              href: `${baseUrl}/${file}`,
+              'data-theme': theme
+            },
+            injectTo: 'head'
+          }))
+        : [];
       return { html, tags: links };
     }
   };
