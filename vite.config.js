@@ -18,7 +18,7 @@ const themeAssets = cleanBased || theme === 'clean' ? 'clean' : theme;
 const baseUrl = process.env.BASE_BRANDING_URL.replace(/\/+$|^\/+/, '');
 
 const toReplace = [
-  /index\.html$/, /errorPage\.html$/, /testPage\.html$/, /testSmall\.html$/
+  /index\.html$/, /errorPage\.html$/, /testPage\.html$/, /testPageCas\.html$/, /testSmall\.html$/
 ];
 
 const toReplaceOthers = [
@@ -215,7 +215,74 @@ function injectFinalCss() {
   }
 }
 
-export default defineConfig({
+// Fragments with no <body> that must NOT receive the init script.
+const skipInjectionFragments = ['head.html', 'footer.html'];
+
+// Inject the branding JS so it loads on every page — including CAS pages.
+// CAS does NOT include head.html (https://github.com/AtlasOfLivingAustralia/ala-cas-5/issues/29),
+// so the script can only ride along in banner.html (the fragment CAS does
+// include). In production it is emitted as a single self-contained CLASSIC
+// (IIFE) bundle at the stable path js/init.js and injected as a plain
+// <script src> — no type=module, no crossorigin — so the CAS page can load it
+// cross-origin from the skin host WITHOUT CORS (matches the brunch behaviour).
+// In dev, Vite serves the unbundled ES module entry.
+function injectInitToBody() {
+  return {
+    name: 'inject-init-to-body',
+    enforce: 'post',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        const shouldSkip = skipInjectionFragments.some(f => ctx.path.endsWith(f));
+        if (shouldSkip) return html;
+
+        const isBannerFragment = ctx.path.endsWith('banner.html') && !html.includes('<body');
+        const hasBody = html.includes('<body');
+        if (!isBannerFragment && !hasBody) return html;
+
+        const prod = !!ctx.bundle;
+        const src = prod ? `${baseUrl}/js/init.js` : '/app/js/init.js';
+        const cssSrc = prod ? `${baseUrl}/css/init.css` : null;
+        const attrs = prod ? { src, defer: true } : { type: 'module', src };
+        const cssTag = cssSrc ? `<link rel="stylesheet" href="${cssSrc}">` : '';
+        const scriptTag = prod
+          ? `<script src="${src}" defer></script>`
+          : `<script type="module" src="${src}"></script>`;
+
+        if (isBannerFragment) {
+          return cssTag + '\n' + scriptTag + '\n' + html;
+        }
+        const tags = [{ tag: 'script', attrs, injectTo: 'body-prepend' }];
+        if (prod) tags.push({ tag: 'link', attrs: { rel: 'stylesheet', href: cssSrc }, injectTo: 'head' });
+        return { html, tags };
+      }
+    }
+  };
+}
+
+// Second build pass (BUILD_INIT=1): emit app/js/init.js as one standalone
+// classic IIFE bundle at the stable name js/init.js, keeping the main HTML
+// build output (emptyOutDir:false). This is what the banner injection points
+// to in production.
+const initLibConfig = defineConfig({
+  base: `${baseUrl}/`,
+  plugins: [jscc({ values: { _LOCALES_URL: baseUrl, _DEBUG: 1 } })],
+  build: {
+    emptyOutDir: false,
+    cssCodeSplit: false,
+    lib: {
+      entry: path.resolve(__dirname, 'app/js/init.js'),
+      formats: ['iife'],
+      name: 'AlaBranding',
+      fileName: () => 'js/init.js'
+    },
+    rollupOptions: {
+      output: { assetFileNames: () => 'css/init.css' }
+    }
+  }
+});
+
+const mainConfig = defineConfig({
   base: `${baseUrl}/`,
   assetsInclude: ['app/assets/*.ico', 'app/assets/images/*', 'app/assets/locales/**/*'],
   plugins: [
@@ -224,6 +291,7 @@ export default defineConfig({
     virtualGlobalCss(),
     hotReloadFragments(),
     viteStaticCopy({ targets: copyCommands }),
+    injectInitToBody(),
     injectThemeCssLinks(themeAssets),
     jscc({ values: { _LOCALES_URL: baseUrl, _DEBUG: 1 } }),
     VitePluginRadar({ analytics: { id: settings.analytics.googleId } }),
@@ -238,6 +306,7 @@ export default defineConfig({
         init: path.resolve(__dirname, 'app/js/init.js'),
         errorPage: path.resolve(__dirname, 'errorPage.html'),
         testPage: path.resolve(__dirname, 'testPage.html'),
+        testPageCas: path.resolve(__dirname, 'testPageCas.html'),
         testSmall: path.resolve(__dirname, 'testSmall.html'),
         head: path.resolve(__dirname, 'head.html'),
         banner: path.resolve(__dirname, 'banner.html'),
@@ -283,4 +352,6 @@ export default defineConfig({
     watch: { usePolling: true }
   }
 });
+
+export default process.env.BUILD_INIT ? initLibConfig : mainConfig;
 
