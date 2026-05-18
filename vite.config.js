@@ -107,8 +107,17 @@ function injectThemeCssLinks(theme) {
   return {
     name: 'inject-theme-css-links',
     transformIndexHtml(html, ctx) {
-      const doTransform = html.includes('<head>') || ctx.path.endsWith('head.html');
-      const links = doTransform
+      const hasHead = html.includes('<head>') || ctx.path.endsWith('head.html');
+      // banner.html has no <head> but CAS only includes banner — inject theme CSS
+      // as raw prepended links so the CAS page gets the theme styles.
+      const isBannerFragment = ctx.path.endsWith('banner.html') && !html.includes('<body');
+      if (isBannerFragment && ctx.bundle) {
+        const rawLinks = files
+          .map(file => `<link rel="stylesheet" href="${baseUrl}/${file}" data-theme="${theme}">`)
+          .join('\n');
+        return rawLinks + '\n' + html;
+      }
+      const links = hasHead
         ? files.map(file => ({
             tag: 'link',
             attrs: {
