@@ -10,6 +10,7 @@ import { VitePluginRadar } from 'vite-plugin-radar';
 import glob from 'fast-glob';
 import https from 'https';
 
+const buildTimestamp = Date.now();
 const theme = settings.theme;
 const cleanBased = [
   'flatly', 'superhero', 'yeti', 'cosmo', 'darkly', 'paper', 'sandstone', 'simplex', 'slate'
@@ -234,7 +235,11 @@ const skipInjectionFragments = ['head.html', 'footer.html'];
 // (IIFE) bundle at the stable path js/init.js and injected as a plain
 // <script src> — no type=module, no crossorigin — so the CAS page can load it
 // cross-origin from the skin host WITHOUT CORS (matches the brunch behaviour).
-// In dev, Vite serves the unbundled ES module entry.
+//
+// Prod: inject ONLY into banner.html — all pages include banner server-side, so
+// init loads exactly once everywhere (CAS included). No duplication.
+// Dev: inject into full pages (banner injection not applicable in dev mode).
+// Cache-busting via ?v=buildTimestamp query string (filename is stable, no hash).
 function injectInitToBody() {
   return {
     name: 'inject-init-to-body',
@@ -245,13 +250,17 @@ function injectInitToBody() {
         const shouldSkip = skipInjectionFragments.some(f => ctx.path.endsWith(f));
         if (shouldSkip) return html;
 
+        const prod = !!ctx.bundle;
         const isBannerFragment = ctx.path.endsWith('banner.html') && !html.includes('<body');
         const hasBody = html.includes('<body');
-        if (!isBannerFragment && !hasBody) return html;
 
-        const prod = !!ctx.bundle;
-        const src = prod ? `${baseUrl}/js/init.js` : '/app/js/init.js';
-        const cssSrc = prod ? `${baseUrl}/css/init.css` : null;
+        // Prod: only banner.html (all pages include banner server-side — no duplication)
+        // Dev: full pages only (banner injection not applicable in dev)
+        if (prod && !isBannerFragment) return html;
+        if (!prod && !hasBody) return html;
+
+        const src = prod ? `${baseUrl}/js/init.js?v=${buildTimestamp}` : '/app/js/init.js';
+        const cssSrc = prod ? `${baseUrl}/css/init.css?v=${buildTimestamp}` : null;
         const attrs = prod ? { src, defer: true } : { type: 'module', src };
         const cssTag = cssSrc ? `<link rel="stylesheet" href="${cssSrc}">` : '';
         const scriptTag = prod
@@ -261,9 +270,8 @@ function injectInitToBody() {
         if (isBannerFragment) {
           return cssTag + '\n' + scriptTag + '\n' + html;
         }
-        const tags = [{ tag: 'script', attrs, injectTo: 'body-prepend' }];
-        if (prod) tags.push({ tag: 'link', attrs: { rel: 'stylesheet', href: cssSrc }, injectTo: 'head' });
-        return { html, tags };
+        // dev: inject into body-prepend of full pages
+        return { html, tags: [{ tag: 'script', attrs, injectTo: 'body-prepend' }] };
       }
     }
   };
