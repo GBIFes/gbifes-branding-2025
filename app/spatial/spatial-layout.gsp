@@ -7,8 +7,53 @@
   so no Bootstrap 5 variant is needed here (that is only for the spatial-service admin pages: dist/bs5).
   If you bump spatial-hub, diff its portal.gsp and re-sync the non-header parts.
 --%>
+<%
+    // Multilanguage: language of the hub request (?lang=xx / browser). Every text is first looked up as the
+    // message code "branding.spatial.<key>" (so ala-i18n / the hub bundles can override it), then in this dictionary.
+    def lang = org.springframework.web.servlet.support.RequestContextUtils.getLocale(request).language
+    def T = [
+        skip: [es: "Ir al contenido", en: "Skip to content", ca: "Vés al contingut"],
+        logo_alt: [es: "Portal de Datos de GBIF.ES", en: "GBIF.ES Data Portal", ca: "Portal de Dades de GBIF.ES"],
+        page_title: [es: "Portal Espacial de Datos de GBIF.ES", en: "GBIF.ES Spatial Data Portal", ca: "Portal Espacial de Dades de GBIF.ES"],
+        save: [es: "Guardar", en: "Save", ca: "Desa"],
+        load: [es: "Cargar", en: "Load", ca: "Carrega"],
+        search_open: [es: "Abrir diálogo de búsqueda", en: "Open search dialog", ca: "Obre el diàleg de cerca"],
+        my_account: [es: "Mi cuenta", en: "My account", ca: "El meu compte"],
+        logout: [es: "Salir", en: "Logout", ca: "Surt"],
+        toggle_nav: [es: "Mostrar/ocultar navegación", en: "Toggle navigation", ca: "Mostra/amaga la navegació"],
+        menu_search_analyse: [es: "Buscar y analizar", en: "Search & analyse", ca: "Cerca i analitza"],
+        search_species: [es: "Buscar especies", en: "Search species", ca: "Cerca espècies"],
+        search_records: [es: "Buscar y descargar registros", en: "Search & download records", ca: "Cerca i descarrega registres"],
+        search_datasets: [es: "Buscar conjuntos de datos", en: "Search datasets", ca: "Cerca conjunts de dades"],
+        spatial_analysis: [es: "Análisis espacial (Portal espacial)", en: "Spatial analysis (Spatial Portal)", ca: "Anàlisi espacial (Portal espacial)"],
+        explore_area: [es: "Explora tu área", en: "Explore your area", ca: "Explora la teva àrea"],
+        explore_collections: [es: "Explorar colecciones de historia natural", en: "Explore natural history collections", ca: "Explora col·leccions d'història natural"],
+        menu_participate: [es: "Participa", en: "Get involved", ca: "Participa"],
+        publishing_guide: [es: "Guía de Publicación", en: "Publishing guide", ca: "Guia de publicació"],
+        upload_list: [es: "Cargar una lista", en: "Upload a species list", ca: "Carrega una llista"],
+        menu_about: [es: "Sobre GBIF.ES", en: "About GBIF.ES", ca: "Sobre GBIF.ES"],
+        services: [es: "Servicios", en: "Services", ca: "Serveis"],
+        news_events: [es: "Noticias y eventos", en: "News & events", ca: "Notícies i esdeveniments"],
+        contact: [es: "Contacto", en: "Contact", ca: "Contacte"],
+        la_community: [es: "Comunidad de Living Atlases", en: "Living Atlases community", ca: "Comunitat de Living Atlases"],
+        training: [es: "Formación", en: "Training", ca: "Formació"],
+        menu_help: [es: "Ayuda", en: "Help", ca: "Ajuda"],
+        help_faq: [es: "Todos los artículos (FAQs)", en: "Browse all articles (FAQs)", ca: "Tots els articles (FAQs)"],
+        help_data: [es: "Ayuda de datos de ALA", en: "ALA Data help", ca: "Ajuda de dades d'ALA"],
+        help_tools: [es: "Ayuda de herramientas y apps de ALA", en: "ALA Tools & Apps help", ca: "Ajuda d'eines i apps d'ALA"],
+        help_spatial: [es: "Ayuda del Portal espacial de ALA", en: "ALA Spatial Portal help", ca: "Ajuda del Portal espacial d'ALA"],
+        search_placeholder: [es: "Buscar especies, conjuntos de datos y más...", en: "Search species, datasets, and more...", ca: "Cerca espècies, conjunts de dades i més..."],
+        search_submit: [es: "Buscar", en: "Search", ca: "Cerca"],
+        close: [es: "Cerrar", en: "Close", ca: "Tanca"]
+    ]
+    def tr = { String k ->
+        def code = k == 'save' ? 'Save' : (k == 'load' ? 'Load' : 'branding.spatial.' + k)
+        def d = T[k]?.get(lang) ?: T[k]?.get('en') ?: k
+        g.message(code: code, default: d)
+    }
+%>
 <!DOCTYPE html>
-<html lang="en-AU">
+<html lang="${lang}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="app.version" content="${g.meta(name: 'info.app.version')}"/>
@@ -19,7 +64,7 @@
     <!-- Favicon -->
     <link href="${grailsApplication.config.favicon.url}" rel="shortcut icon"  type="image/x-icon"/>
 
-    <title>Portal Espacial de Datos de GBIF.ES</title>
+    <title>${tr('page_title')}</title>
     <g:layoutHead/>
     <asset:stylesheet href="application.css" />
     <%-- GBIF.ES extras, inlined from the former assets css/gbif-es-spatial-extra.css and js/gbif-es-spatial-extra.js
@@ -118,7 +163,7 @@ if (lang == null) {
 <g:set var="headerVisiblity" value="${(grailsApplication.config.skin.header && grailsApplication.config.spApp.header) ? '' : 'hidden'}"/>
 
     <div id="wrapper-navbar" itemscope="" itemtype="http://schema.org/WebSite" class="${headerVisiblity}">
-      <a class="skip-link sr-only sr-only-focusable" href="#map">Ir al contenido</a>
+      <a class="skip-link sr-only sr-only-focusable" href="#map">${tr('skip')}</a>
 
     <nav class="navbar navbar-inverse navbar-expand-md">
         <div class="container-fluid header-logo-menu">
@@ -127,7 +172,7 @@ if (lang == null) {
             <div>
               <a href="https://www.gbif.es/" class="custom-logo-link navbar-brand" itemprop="url">
                 <img width="120" src="https://datos.gbif.es/brand-2025-vite/images/logo-GBIF-RGB-2023-solo-letras.png"
-                     class="custom-logo" alt="Portal de Datos de GBIF.ES" itemprop="image"
+                     class="custom-logo" alt="${tr('logo_alt')}" itemprop="image"
                 ></a>
                 <!-- end custom logo -->
             </div>
@@ -137,14 +182,14 @@ if (lang == null) {
                         <a href="#" class="save-load"
                            onclick="$('#saveSessionButton')[0].click()"
                            data-toggle="dropdown" role="button"
-                           aria-expanded="false">Guardar</a>
+                           aria-expanded="false">${tr('save')}</a>
                         <a href="#" class="save-load"
                            onclick="$('#sessionsButton')[0].click()"
                            data-toggle="dropdown" role="button"
-                           aria-expanded="false">Cargar</a>
+                           aria-expanded="false">${tr('load')}</a>
                     </g:if>
                     <button class="display-flex search-trigger hidden-md hidden-lg collapsed collapse-trigger-button"
-                            title="Abrir diálogo de búsqueda"
+                            title="${tr('search_open')}"
                             data-toggle="collapse" data-target="#autocompleteSearchALA"
                             onclick="focusOnClickSearchButton()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 22 22">
@@ -168,7 +213,7 @@ if (lang == null) {
                     </g:if>
                     <g:if test="${request.userPrincipal != null}">
                         <a href="${grailsApplication.config.userdetails.web.url+'profile'}" role="button"
-                           class="account-mobile hidden-md hidden-lg myProfileBtn hideLoggedOut" title="Mi cuenta">
+                           class="account-mobile hidden-md hidden-lg myProfileBtn hideLoggedOut" title="${tr('my_account')}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 37 41">
                                 <defs>
                                     <style>
@@ -185,14 +230,14 @@ if (lang == null) {
                         </a>
 
                         <g:link url="${grailsApplication.config.grails.serverURL}/logout"  role="button"
-                                class="account-mobile hidden-md hidden-lg logoutBtn mobile-logout-btn" title="Salir">
+                                class="account-mobile hidden-md hidden-lg logoutBtn mobile-logout-btn" title="${tr('logout')}">
                             <i class="fas fa-sign-out"></i>
                         </g:link>
 
                     </g:if>
                     <button class="navbar-toggle collapsed collapse-trigger-button" type="button"
                             data-toggle="collapse" data-target="#navbarOuterWrapper" aria-controls="navbarOuterWrapper"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                            aria-expanded="false" aria-label="${tr('toggle_nav')}">
                         <div class="horizontal-line"></div>
 
                         <div class="horizontal-line"></div>
@@ -211,145 +256,144 @@ if (lang == null) {
                   <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                       id="menu-item-22"
                       class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-22 nav-item show">
-                    <a title="Search &amp; analyse" href="#" data-toggle="dropdown" aria-haspopup="true"
+                    <a title="${tr('menu_search_analyse')}" href="#" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="true" class="dropdown-toggle nav-link"
-                       id="menu-item-dropdown-22">Buscar y analizar
+                       id="menu-item-dropdown-22">${tr('menu_search_analyse')}
                       <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-22" role="menu">
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-41958"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41958 nav-item">
-                        <a title="Buscar especies" href="https://especies.gbif.es/"
-                           class="dropdown-item">Buscar especies</a></li>
+                        <a title="${tr('search_species')}" href="https://especies.gbif.es/"
+                           class="dropdown-item">${tr('search_species')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-23"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23 nav-item">
-                        <a title="Buscar y descargar registros"
+                        <a title="${tr('search_records')}"
                            href="https://registros.gbif.es/search#tab_simpleSearch"
-                           class="dropdown-item">Buscar y descargar registros</a></li>
+                           class="dropdown-item">${tr('search_records')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-28"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-28 nav-item">
-                        <a title="Buscar conjuntos de datos" href="https://colecciones.gbif.es/datasets"
-                           class="dropdown-item">Buscar conjuntos de datos</a></li>
+                        <a title="${tr('search_datasets')}" href="https://colecciones.gbif.es/datasets"
+                           class="dropdown-item">${tr('search_datasets')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-41967" role="separator" class="divider"></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-24"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24 nav-item">
-                        <a title="Analisis espacial (Portal espacial)" href="https://espacial.gbif.es/"
-                           class="dropdown-item">Analisis espacial (Portal espacial)</a></li>
+                        <a title="${tr('spatial_analysis')}" href="https://espacial.gbif.es/"
+                           class="dropdown-item">${tr('spatial_analysis')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-26"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-26 nav-item">
-                        <a title="Explora tu área"
+                        <a title="${tr('explore_area')}"
                            href="https://registros.gbif.es/explore/your-area"
-                           class="dropdown-item">Explora tu área</a></li>
+                           class="dropdown-item">${tr('explore_area')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-31"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-31 nav-item">
-                        <a title="Explora colecciones de historia natural"
-                           href="https://colecciones.gbif.es/" class="dropdown-item">Explorar colecciones de historia natural</a></li>
+                        <a title="${tr('explore_collections')}"
+                           href="https://colecciones.gbif.es/" class="dropdown-item">${tr('explore_collections')}</a></li>
                     </ul>
                   </li>
                   <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                       id="menu-item-32"
                       class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-32 nav-item">
-                    <a title="Participa" href="#" data-toggle="dropdown" aria-haspopup="true"
+                    <a title="${tr('menu_participate')}" href="#" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" class="dropdown-toggle nav-link"
-                       id="menu-item-dropdown-32">Participa
+                       id="menu-item-dropdown-32">${tr('menu_participate')}
                       <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-32" role="menu">
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-40773"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40773 nav-item">
-                        <a title="Guía de Publicación"
+                        <a title="${tr('publishing_guide')}"
                            href="https://www.gbif.es/guia-de-publicacion/"
-                           class="dropdown-item">Guía de Publicación</a></li>
+                           class="dropdown-item">${tr('publishing_guide')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-40728"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40728 nav-item">
-                        <a title="Cargar una lista"
+                        <a title="${tr('upload_list')}"
                            href="https://listas.gbif.es/public/speciesLists"
                            class="dropdown-item">
-                          Cargar una lista</a></li>
+                          ${tr('upload_list')}</a></li>
                     </ul>
                   </li>
                   <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                       id="menu-item-178"
                       class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-178 nav-item">
-                    <a title="Sobre GBIF.ES" href="#" data-toggle="dropdown" aria-haspopup="true"
+                    <a title="${tr('menu_about')}" href="#" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" class="dropdown-toggle nav-link"
-                       id="menu-item-dropdown-178">Sobre GBIF.ES
+                       id="menu-item-dropdown-178">${tr('menu_about')}
                       <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-178" role="menu">
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-179"
                           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-179 nav-item">
-                        <a title="Servicios" href="https://www.gbif.es/sobre-gbif/servicios/"
-                           class="dropdown-item">Servicios</a></li>
+                        <a title="${tr('services')}" href="https://www.gbif.es/sobre-gbif/servicios/"
+                           class="dropdown-item">${tr('services')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-40734"
                           class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-40734 nav-item">
-                        <a title="Noticias y eventos" href="https://www.gbif.es/noticias-y-eventos/"
-                           class="dropdown-item">Noticias y eventos</a></li>
+                        <a title="${tr('news_events')}" href="https://www.gbif.es/noticias-y-eventos/"
+                           class="dropdown-item">${tr('news_events')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-175"
                           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-175 nav-item">
-                        <a title="Contacto" href="https://www.gbif.es/contacto/"
-                           class="dropdown-item">Contacto</a></li>
+                        <a title="${tr('contact')}" href="https://www.gbif.es/contacto/"
+                           class="dropdown-item">${tr('contact')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-41969" role="separator" class="divider"></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-40731"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40731 nav-item">
-                        <a title="Comunidad de Living Atlases" href="https://living-atlases.gbif.org/"
-                           class="dropdown-item">Comunidad de Living Atlases</a></li>
+                        <a title="${tr('la_community')}" href="https://living-atlases.gbif.org/"
+                           class="dropdown-item">${tr('la_community')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-40730"
                           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40730 nav-item">
-                        <a title="Formación"
+                        <a title="${tr('training')}"
                            href="https://www.gbif.es/formacion/"
-                           class="dropdown-item">Formación</a></li>
+                           class="dropdown-item">${tr('training')}</a></li>
                     </ul>
                   </li>
                   <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                       id="menu-item-41391"
                       class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-41391 nav-item">
-                    <a title="Ayuda" href="#" data-toggle="dropdown" aria-haspopup="true"
+                    <a title="${tr('menu_help')}" href="#" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" class="dropdown-toggle nav-link"
-                       id="menu-item-dropdown-41391">Ayuda
+                       id="menu-item-dropdown-41391">${tr('menu_help')}
                       <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-41391" role="menu">
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-41959"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41959 nav-item">
-                        <a title="Browse all articles (FAQs)"
-                           href="https://support.ala.org.au/support/home" class="dropdown-item">Browse
-                          all articles (FAQs)</a></li>
+                        <a title="${tr('help_faq')}"
+                           href="https://support.ala.org.au/support/home" class="dropdown-item">${tr('help_faq')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-41960"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41960 nav-item">
-                        <a title="ALA Data help"
+                        <a title="${tr('help_data')}"
                            href="https://support.ala.org.au/support/solutions/6000137994"
-                           class="dropdown-item">ALA Data help</a></li>
+                           class="dropdown-item">${tr('help_data')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-41961"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41961 nav-item">
-                        <a title="ALA Tools &amp; Apps help"
+                        <a title="${tr('help_tools')}"
                            href="https://support.ala.org.au/support/solutions/6000138053"
-                           class="dropdown-item">ALA Tools &amp; Apps help</a></li>
+                           class="dropdown-item">${tr('help_tools')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-41962"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41962 nav-item">
-                        <a title="ALA Spatial Portal help"
+                        <a title="${tr('help_spatial')}"
                            href="https://support.ala.org.au/support/solutions/6000138349"
-                           class="dropdown-item">ALA Spatial Portal help</a></li>
+                           class="dropdown-item">${tr('help_spatial')}</a></li>
                       <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"
                           id="menu-item-41963"
                           class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41963 nav-item">
-                        <a title="Contacto" href="https://www.gbif.es/contacto/"
-                           class="dropdown-item">Contacto</a>
+                        <a title="${tr('contact')}" href="https://www.gbif.es/contacto/"
+                           class="dropdown-item">${tr('contact')}</a>
                       </li>
                     </ul>
                   </li>
@@ -373,7 +417,7 @@ if (lang == null) {
                                   d="M1524.33,60v1.151a7.183,7.183,0,1,1-2.69.523,7.213,7.213,0,0,1,2.69-.523V60m0,0a8.333,8.333,0,1,0,7.72,5.217A8.323,8.323,0,0,0,1524.33,60h0Zm6.25,13.772-0.82.813,7.25,7.254a0.583,0.583,0,0,0,.82,0,0.583,0.583,0,0,0,0-.812l-7.25-7.254h0Zm-0.69-7.684,0.01,0c0-.006-0.01-0.012-0.01-0.018s-0.01-.015-0.01-0.024a6,6,0,0,0-7.75-3.3l-0.03.009-0.02.006v0a0.6,0.6,0,0,0-.29.293,0.585,0.585,0,0,0,.31.756,0.566,0.566,0,0,0,.41.01V63.83a4.858,4.858,0,0,1,6.32,2.688l0.01,0a0.559,0.559,0,0,0,.29.29,0.57,0.57,0,0,0,.75-0.305A0.534,0.534,0,0,0,1529.89,66.089Z"
                                   transform="translate(-1516 -60)"></path>
                         </svg>
-                        <span class="collapse visible-on-show" aria-hidden="true" title="Close">&times;</span>
+                        <span class="collapse visible-on-show" aria-hidden="true" title="${tr('close')}">&times;</span>
                     </button>
                 </div>
 
@@ -384,9 +428,9 @@ if (lang == null) {
                 <form method="get" action="${grailsApplication.config.bie.baseURL}${grailsApplication.config.bie.searchPath}" class="search-form">
                     <div class="space-between">
                         <input id="autocompleteHeader" type="text" name="q"
-                               placeholder="Search species, datasets, and more..." class="search-input"
+                               placeholder="${tr('search_placeholder')}" class="search-input"
                                autocomplete="off"/>
-                        <button class="search-submit" title="submit">
+                        <button class="search-submit" title="${tr('search_submit')}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 22 22">
                                 <defs>
                                     <style>
