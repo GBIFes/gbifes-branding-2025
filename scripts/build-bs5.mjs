@@ -104,4 +104,11 @@ for (const [name, txt] of Object.entries(files)) {
   if (left) throw new Error(`${name}: unresolved tokens ${[...new Set(left)].join(', ')}`);
   fs.writeFileSync(path.join(out, name), txt);
 }
+// spatial-hub skin layout (GBIF.ES header), picked up by la-docker-compose as skin.layout=spatial-layout
+const layoutSrc = path.join(root, 'app/spatial/spatial-layout.gsp');
+if (fs.existsSync(layoutSrc)) {
+  const layoutDir = path.join(root, 'dist/spatial/views/layouts');
+  fs.mkdirSync(layoutDir, { recursive: true });
+  fs.copyFileSync(layoutSrc, path.join(layoutDir, 'spatial-layout.gsp'));
+}
 console.log(`dist/bs5 ready (baseUrl ${baseUrl})`);
