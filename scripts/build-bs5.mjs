@@ -40,6 +40,8 @@ for (const d of ['css', 'js', 'fonts']) {
   fs.cpSync(path.join(bs5Dir, 'build', d), path.join(out, d), { recursive: true });
 }
 fs.copyFileSync(path.join(root, 'app/bs5/branding-bs5.css'), path.join(out, 'css/branding-bs5.css'));
+// Apache: .mustache has no content type by default and the app (Java URLConnection) refuses it
+fs.copyFileSync(path.join(root, 'app/bs5/htaccess'), path.join(out, '.htaccess'));
 
 // 3. Bootstrap 3 -> 5 markup of the theme fragments
 const bs3to5 = html => html
