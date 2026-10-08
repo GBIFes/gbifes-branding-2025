@@ -1,0 +1,39 @@
+/* GBIF.ES theme over the ALA Bootstrap 5 base (commonui-bs5-2019): fixes for Bootstrap 3 -> 5 differences */
+
+/* Top bar auth links look like links (Bootstrap 3 build: .btn-outline-white defined by the ALA bs3 css) */
+header#masthead .top-bar .account .btn,
+header#masthead .top-bar .account .btn:hover {
+  background: transparent;
+  border: 0;
+  color: #2f5c9e;
+  font-size: 13px;
+  padding: 0 .5rem;
+}
+header#masthead .top-bar .account { display: flex; align-items: center; }
+.account.signedIn .loginBtn, .account.signedIn .signUpBtn,
+.account.signedOut .myProfileBtn, .account.signedOut .logoutBtn { display: none; }
+
+/* Footer menu: Bootstrap 3 .navbar-nav was a block list (the theme lays it out in columns) */
+#colophon #menu-footer.navbar-nav { display: block; }
+#colophon #menu-footer.navbar-nav > li { list-style: none; }
+
+/* Bootstrap 5 removed .hide */
+.hide { display: none !important; }
+
+/* Bootstrap 3 showed .navbar-collapse always from 768px up; in Bootstrap 5 .collapse hides it */
+@media (min-width: 768px) {
+  header#masthead .navbar-collapse.collapse { display: block !important; height: auto !important; overflow: visible; }
+}
+
+/* Bootstrap 3 .navbar-nav > li floated: the theme lays out two footer columns with it */
+#colophon #menu-footer.navbar-nav > li { float: left; width: 50%; }
+
+/* Base of the Bootstrap 3 hamburger (the theme only customises it) */
+.navbar-toggle {
+  position: relative; float: right; padding: 9px 10px; margin: 8px 0;
+  background-color: transparent; border: 1px solid transparent; border-radius: 4px;
+}
+.navbar-toggle:focus { outline: 0; }
+.navbar-toggle .icon-bar { display: block; width: 22px; height: 2px; border-radius: 1px; }
+.navbar-toggle .icon-bar + .icon-bar { margin-top: 4px; }
+@media (min-width: 768px) { .navbar-toggle { display: none; } }
