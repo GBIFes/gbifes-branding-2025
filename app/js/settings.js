@@ -1,5 +1,5 @@
 export default {
-  isDevel: false,
+  isDevel: true,
   inMante: false, // set to true and deploy if you want to set a maintenance message in all the services
   enabledLangs: ['es', 'en', 'ca'],
   mainDomain: 'gbif.es', // used for cookies (without http/https)

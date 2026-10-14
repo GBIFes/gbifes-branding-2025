@@ -54,14 +54,16 @@ echo "Builder: $BUILDER"
 
 NODE_PATH=~/.npm-packages/lib/node_modules/ node app/js/stats-job.js > app/assets/stats.json
 
+# demo.gbif.es is a CNAME of datos.gbif.es (2026-10): one production build for both, with the
+# datos.gbif.es base URL and isDevel false (Sentry on). settings-demo.js is only for local dev.
 if [ "$BUILDER" = "brunch" ]; then
   DEST=public
-  cp app/js/settings-demo.js app/js/settings.js
+  cp app/js/settings-prod.js app/js/settings.js
   brunch build --production
 elif [ "$BUILDER" = "vite" ]; then
   DEST=dist
-  cp app/js/settings-demo.js app/js/settings.js
-  npm run build-demo
+  cp app/js/settings-prod.js app/js/settings.js
+  npm run build
 fi
 
 if [ "$DEPLOY" = "demo" ] || [ "$DEPLOY" = "both" ]; then
@@ -69,14 +71,6 @@ if [ "$DEPLOY" = "demo" ] || [ "$DEPLOY" = "both" ]; then
   rsync -a --delete $DEST/ demo.gbif.es:/srv/auth.gbif.es/www/brand-2025-vite/
   rsync -a $DEST/ demo.gbif.es:/srv/demo.gbif.es/www/
   rsync -a $DEST/ demo.gbif.es:/srv/auth.gbif.es/www/
-fi
-
-if [ "$BUILDER" = "brunch" ]; then
-  cp app/js/settings-prod.js app/js/settings.js
-  brunch build --production
-elif [ "$BUILDER" = "vite" ]; then
-  cp app/js/settings-prod.js app/js/settings.js
-  npm run build
 fi
 
 if [ "$DEPLOY" = "datos" ] || [ "$DEPLOY" = "both" ]; then
