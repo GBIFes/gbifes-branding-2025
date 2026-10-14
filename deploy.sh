@@ -93,6 +93,14 @@ if [ "$DEPLOY" = "datos" ] || [ "$DEPLOY" = "both" ]; then
   curl -s https://regiones.gbif.es/headerFooter/clearCache && \
   curl -s https://auth.gbif.es/userdetails/headerFooter/clearCache && \
   curl -s https://colecciones.gbif.es/headerFooter/clearCache
+  # Bootstrap 5 build for the ala-bootstrap5 apps (spatial-service, collectory >= 6.3.0): they fetch
+  # <baseURL>/{assets,banner,footer}.mustache from brand-2025-vite-bs5/bs5. Built last because it
+  # rebuilds dist/ with its own base URL.
+  if [ "$BUILDER" = "vite" ]; then
+    npm run build-datos-bs5
+    rsync -a --delete $DEST/ datos.gbif.es:/srv/auth.gbif.es/www/brand-2025-vite-bs5/
+    rsync -a --delete $DEST/ demo.gbif.es:/srv/auth.gbif.es/www/brand-2025-vite-bs5/
+  fi
 else
   curl -s https://especies.gbif.es/headerFooter/clearCache
 fi
