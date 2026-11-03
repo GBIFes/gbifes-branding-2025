@@ -11,11 +11,13 @@
     "build-demo": "BASE_BRANDING_URL=https://demo.gbif.es vite build && BASE_BRANDING_URL=https://demo.gbif.es BUILD_INIT=1 vite build && BASE_BRANDING_URL=https://demo.gbif.es node scripts/build-bs5.mjs",
     "preview": "BASE_BRANDING_URL=http://localhost:3333 vite preview",
     "build:bs5": "BASE_BRANDING_URL=https://datos.gbif.es node scripts/build-bs5.mjs",
-    "build-datos-bs5": "BASE_BRANDING_URL=https://datos.gbif.es/brand-2025-vite-bs5 vite build && BASE_BRANDING_URL=https://datos.gbif.es/brand-2025-vite-bs5 BUILD_INIT=1 vite build && BASE_BRANDING_URL=https://datos.gbif.es/brand-2025-vite-bs5 node scripts/build-bs5.mjs"
+    "build-datos-bs5": "BASE_BRANDING_URL=https://datos.gbif.es/brand-2025-vite-bs5 vite build && BASE_BRANDING_URL=https://datos.gbif.es/brand-2025-vite-bs5 BUILD_INIT=1 vite build && BASE_BRANDING_URL=https://datos.gbif.es/brand-2025-vite-bs5 node scripts/build-bs5.mjs",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "@fontsource/noto-serif": "^5.2.7",
     "@fontsource/open-sans": "^5.2.5",
+    "@playwright/test": "^1.56.1",
     "@rollup/plugin-replace": "^5.0.5",
     "eslint": "^9.26.0",
     "fast-glob": "^3.3.3",
