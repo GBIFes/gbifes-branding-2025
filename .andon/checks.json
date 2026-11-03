@@ -1,0 +1,30 @@
+{
+  "uncovered": "block",
+  "ignore": [
+    "**/*.md",
+    "dist/**",
+    "screenshots/**",
+    ".gitignore",
+    "app/assets/stats.json"
+  ],
+  "rules": [
+    {
+      "match": [
+        "app/js/**",
+        "app/themes/*/assets/*.html",
+        "vite.config.js",
+        "vite-plugin-multi-replace.js",
+        "scripts/*.mjs",
+        "playwright.config.js",
+        "tests/e2e/**",
+        "package.json",
+        "package-lock.json",
+        "yarn.lock",
+        "config.json",
+        ".gitmodules",
+        ".andon/checks.json"
+      ],
+      "run": "npm run build && npm run test:e2e"
+    }
+  ]
+}
