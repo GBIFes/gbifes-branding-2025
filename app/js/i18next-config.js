@@ -97,7 +97,7 @@ i18nOpts.missingKeyHandler = function miss(lng, ns, key, defaultValue) {
 };
 
 i18n.on('languageChanged', function (lng) {
-  if (i18n.services.languageDetector) {
+  if (i18n.services.languageDetector && i18n.resolvedLanguage) {
     console.log(`On lang changed ${lng}`);
     // Store in the cookie the resolved one: i18n.language keeps the raw
     // ?lang= value even when it is not in supportedLngs
