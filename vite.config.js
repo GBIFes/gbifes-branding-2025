@@ -241,11 +241,8 @@ const copyCommands = [
   { src: 'commonui-bs3-2019/build/js/*', dest: 'js' },
   { src: 'commonui-bs3-2019/build/css/*', dest: 'css' },
   { src: 'commonui-bs3-2019/build/fonts/*', dest: 'fonts' },
-  { src: 'app/assets/fonts/*', dest: 'fonts' },
   { src: 'app/assets/*', dest: '' },
-  { src: `app/themes/${themeAssets}`, dest: 'app/themes/' },
-  { src: 'app/assets/images/*', dest: 'images' },
-  { src: 'app/assets/locales/*', dest: 'locales' }
+  { src: `app/themes/${themeAssets}`, dest: 'app/themes/' }
 ];
 
 if (theme === 'material') {

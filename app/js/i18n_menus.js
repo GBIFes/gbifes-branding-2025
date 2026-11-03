@@ -1,7 +1,7 @@
 import gbifesjs from './settings.js';
 import { mountCookieConsent } from './cookie-consent.js';
 
-const locale = window.i18next.language;
+const locale = window.i18next.resolvedLanguage;
 const enabledLangs = gbifesjs.enabledLangs;
 
 function i18n_menus() {
