@@ -2,17 +2,20 @@ import settings from './settings';
 import { CountUp } from 'countup.js';
 import { isHomeFromAppOrigin } from './utils/origin.js';
 
-const lang = window.i18next.resolvedLanguage;
-
-console.log('Current lang:', lang);
-
 var collectory = settings.services.collectory.url;
 var biocacheService = settings.services.biocacheService.url;
 
+// The numbers can arrive before i18next has resolved the language: wait for it
+const whenLang = cb => {
+  const i18n = window.i18next;
+  if (!i18n || i18n.resolvedLanguage) return cb();
+  const go = () => { i18n.off('initialized', go); cb(); };
+  i18n.on('initialized', go);
+};
 
-var setCounter = (id, val, onEnd) => {
+var setCounter = (id, val, onEnd) => whenLang(() => {
   const options = {
-    separator: lang === 'en' ? ',': '.',
+    separator: window.i18next.resolvedLanguage === 'en' ? ',': '.',
     duration: 1
   };
   // If testing set some dummy value
@@ -27,7 +30,7 @@ var setCounter = (id, val, onEnd) => {
   } else {
     console.error(countUp.error);
   }
-};
+});
 
 var getStats = (url, callback) => {
   $.getJSON(url, callback);
