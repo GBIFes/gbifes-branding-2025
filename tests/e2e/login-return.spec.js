@@ -4,8 +4,8 @@
 import { test, expect } from '@playwright/test';
 import { addLoginReturn } from '../../app/js/login-return.js';
 
-const fakeRoot = hrefs => {
-  const links = hrefs.map(href => ({ href, getAttribute: () => href, setAttribute(_, v) { this.href = v; } }));
+const fakeRoot = (hrefs, className = 'loginBtn') => {
+  const links = hrefs.map(href => ({ href, className, getAttribute: () => href, setAttribute(_, v) { this.href = v; } }));
   return { links, querySelectorAll: () => links };
 };
 
@@ -66,6 +66,29 @@ test('a path that only starts like an app is not taken for it', () => {
   const root = fakeRoot(['https://auth.example.org/cas/login']);
   addLoginReturn(root, 'https://hub.example.org/registros-old/x', SERVICES);
   expect(new URL(root.links[0].href).pathname).toBe('/cas/login');
+});
+
+// The logout comes back to the page too: the apps' own /logout and the bare CAS logout take ?url=
+test("an app's own logout link gets this page as url", () => {
+  const root = fakeRoot(['/registros/logout?'], 'logoutBtn');
+  addLoginReturn(root, 'https://hub.example.org/registros/occurrences/search?q=lynx&lang=es', SERVICES);
+  const url = new URL(root.links[0].href);
+  expect(url.origin + url.pathname).toBe('https://hub.example.org/registros/logout');
+  expect(url.searchParams.get('url')).toBe('https://hub.example.org/registros/occurrences/search?q=lynx');
+});
+
+test('the bare CAS logout of the home gets the home as url', () => {
+  const root = fakeRoot(['https://auth.example.org/cas/logout'], 'logoutBtn');
+  addLoginReturn(root, 'https://hub.example.org/', SERVICES);
+  const url = new URL(root.links[0].href);
+  expect(url.origin + url.pathname).toBe('https://auth.example.org/cas/logout');
+  expect(url.searchParams.get('url')).toBe('https://hub.example.org/');
+});
+
+test('a logout that already says where to go, or of another host, is left alone', () => {
+  const root = fakeRoot(['https://auth.example.org/cas/logout?url=https%3A%2F%2Fx.example.org%2F', 'https://other.example.org/logout'], 'logoutBtn');
+  addLoginReturn(root, 'https://hub.example.org/', SERVICES);
+  expect(root.links.map(l => l.href)).toEqual(['https://auth.example.org/cas/logout?url=https%3A%2F%2Fx.example.org%2F', 'https://other.example.org/logout']);
 });
 
 test('links that are not a CAS login are not touched', () => {
