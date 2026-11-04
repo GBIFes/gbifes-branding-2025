@@ -242,7 +242,11 @@ const copyCommands = [
   { src: 'commonui-bs3-2019/build/css/*', dest: 'css' },
   { src: 'commonui-bs3-2019/build/fonts/*', dest: 'fonts' },
   { src: 'app/assets/*', dest: '' },
-  { src: `app/themes/${themeAssets}`, dest: 'app/themes/' }
+  { src: `app/themes/${themeAssets}`, dest: 'app/themes/' },
+  // A bootswatch theme brings its own css, and the glyphicon urls in it are relative to the
+  // theme (../fonts/), so it needs both its directory and the fonts next to its css
+  ...(cleanBased ? [{ src: `app/themes/${theme}/*`, dest: `app/themes/${theme}` },
+    { src: 'app/themes/clean/fonts/*', dest: `app/themes/${theme}/fonts` }] : [])
 ];
 
 if (theme === 'material') {
