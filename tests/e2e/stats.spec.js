@@ -41,6 +41,19 @@ async function openHome(page, lang) {
   await page.goto(`${home}?lang=${lang}`);
 }
 
+// The login link of the banner must bring the visitor back to the home: with the bare CAS login
+// URL (what the build and the ALA apps put there) CAS stays on its own page
+test('the home login links return to the home', async ({ page }) => {
+  await openHome(page, 'es');
+  const hrefs = await page.locator('a.loginBtn').evaluateAll(as => as.map(a => a.getAttribute('href')));
+  expect(hrefs.length).toBeGreaterThan(0);
+  for (const href of hrefs) {
+    const url = new URL(href);
+    expect(url.origin + url.pathname).toBe(`${settings.services.cas.url}/cas/login`);
+    expect(url.searchParams.get('service')).toBe(new URL(settings.mainLAUrl).href);
+  }
+});
+
 for (const lang of ['en', 'es']) {
   test(`formats the numbers in ${lang}`, async ({ page }) => {
     await openHome(page, lang);

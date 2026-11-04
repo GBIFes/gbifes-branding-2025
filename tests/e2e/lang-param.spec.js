@@ -102,6 +102,16 @@ test('the language links only carry a supported lang', async ({ page }) => {
   for (const lang of langs) expect(ENABLED).toContain(lang);
 });
 
+// The locales go out without cache headers: without a per-build ?v= a browser keeps the texts
+// of an older branding (keys shown raw, buttons without a label) long after a deploy
+test('the locales are requested with the version of this build', async ({ page }) => {
+  const urls = [];
+  page.on('request', r => { if (r.url().includes('/locales/')) urls.push(new URL(r.url())); });
+  await openCasLoginWithLang(page, ENABLED[0]);
+  expect(urls.length).toBeGreaterThan(0);
+  for (const u of urls) expect(u.searchParams.get('v'), `${u.pathname} has no ?v=`).toMatch(/^\d{13}$/);
+});
+
 test('markup in ?lang= is not injected into the page', async ({ page }) => {
   await openCasLoginWithLang(page, encodeURIComponent('<img src=x onerror=window.__xss=1>'));
 
